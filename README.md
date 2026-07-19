@@ -2,8 +2,6 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Platform](https://img.shields.io/badge/Platform-Chrome%20%7C%20Edge%20%7C%20Brave-orange.svg)](#)
-[![TypeScript](https://img.shields.io/badge/Built%20With-TypeScript-blue.svg)](#)
-[![React](https://img.shields.io/badge/Framework-React%20%2B%20Vite-brightgreen.svg)](#)
 
 **CreepingScripts** is an elegant, high-performance browser extension and web control playground designed for web developers, QA auditors, UI designers, and power users. It functions as an offline-first bookmarklet controller, a custom script manager, and a runtime visual debugger to audit, inspect, and tweak any webpage on the fly.
 
