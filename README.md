@@ -32,11 +32,6 @@ With the **CreepingScripts Bookmark Hub**, you can instantly test and execute pr
 
 ```text
 CreepingScripts/
-├── src/                      # React + Vite Web Application Source
-│   ├── assets/               # Image resources and logos
-│   ├── components/           # UI and modal components
-│   ├── bookmarkletsData.ts   # Core dictionary of all preloaded bookmarklets
-│   └── App.tsx               # Primary interface, compiler, & ZIP packager
 ├── extension/                # Ready-to-use unpacked Chrome Extension
 │   ├── manifest.json         # Extension config with permission specifications
 │   ├── popup.html            # Clean visual extension popup controller
@@ -46,11 +41,6 @@ CreepingScripts/
 │   ├── icon48.png            # Extension Action Icon (48x48)
 │   ├── icon64.png            # Extension Action Icon (64x64)
 │   └── icon128.png           # Extension Action Icon (128x128)
-├── scripts/
-│   └── generateExtension.js  # Compiler script updating extension resources
-├── index.html                # Main App Entrypoint with custom Favicon
-├── vite.config.ts            # Vite Configuration
-└── package.json              # Project Dependencies & Build Scripts
 ```
 
 ---
@@ -77,32 +67,6 @@ If you cloned this repository, the `/extension` directory is already fully compi
 
 ---
 
-## 🛠️ Local Development & Custom Builds
-
-If you want to edit the React web workspace or compile changes to the extension files:
-
-### 1. Install Dependencies
-```bash
-npm install
-```
-
-### 2. Run React App in Development Mode
-```bash
-npm run dev
-```
-
-### 3. Build & Compile Chrome Extension
-To update `/extension/popup.html` and `/extension/popup.js` from the React source configurations, run the compiler:
-```bash
-npx tsx scripts/generateExtension.js
-```
-
-### 4. Build React Production Code
-```bash
-npm run build
-```
-
----
 
 ## 🛡️ Security & Boundary Notes
 
