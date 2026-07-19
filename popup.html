@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QuickScripts Workspace</title>
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-card: #151d30;
+      --bg-hover: #1e2942;
+      --accent-primary: #3b82f6;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-danger: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #24324f;
+    }
+
+    *, button, input, select, textarea {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    body {
+      width: 500px;
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-size: 13px;
+      overflow-y: auto;
+      max-height: 580px;
+      border: 1px solid var(--border-color);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    header {
+      background: linear-gradient(135deg, #151d30 0%, #0d1424 100%);
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent-primary) 0%, #1d4ed8 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      font-size: 15px;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    }
+
+    .header-info h1 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .header-info p {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .container {
+      padding: 12px 16px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--text-main);
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-primary);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tabs::-webkit-scrollbar {
+      height: 4px;
+    }
+    .tabs::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .tabs::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 2px;
+    }
+    .tabs::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    .tab {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 11px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .tab:hover {
+      color: var(--text-main);
+      background: var(--bg-card);
+    }
+
+    .tab.active {
+      color: white;
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .scripts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .script-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .script-card:hover {
+      border-color: #3b82f644;
+      transform: translateY(-1px);
+    }
+
+    .script-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .script-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .script-cat-tag {
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .pin-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      padding: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, opacity 0.2s;
+      opacity: 0.25;
+      filter: grayscale(100%);
+    }
+
+    .pin-btn:hover {
+      transform: scale(1.2);
+      opacity: 0.8;
+      filter: none;
+    }
+
+    .pin-btn.pinned {
+      opacity: 1;
+      filter: none;
+    }
+
+    .cat-layout { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+    .cat-design { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+    .cat-responsive { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
+    .cat-utility { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .cat-seo { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .cat-advanced { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+    .cat-penetration { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+    .cat-webdev { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+    .cat-content { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .cat-custom { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+    .script-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .script-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: none;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: var(--bg-hover);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .logger-panel {
+      background: #060913;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: monospace;
+      color: var(--accent-success);
+      font-size: 11px;
+      height: 60px;
+      overflow-y: auto;
+      margin-top: 12px;
+    }
+
+    .log-line {
+      margin-bottom: 2px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 10.5px;
+      color: var(--text-muted);
+      background: #0d1424;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .active-indicator {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--accent-success);
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-success);
+      box-shadow: 0 0 6px var(--accent-success);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    /* Custom Snippet Panel styling */
+    .custom-snippet-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .custom-snippet-panel.hidden {
+      display: none;
+    }
+    .panel-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--accent-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .form-group.hidden {
+      display: none;
+    }
+    .form-group label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 6px 8px;
+      color: var(--text-main);
+      font-size: 11.5px;
+      outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--accent-primary);
+    }
+    .form-group textarea {
+      height: 60px;
+      resize: vertical;
+      font-family: monospace;
+      font-size: 11px;
+    }
+    .panel-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 4px;
+    }
+    .panel-actions .btn {
+      flex: none;
+      padding: 6px 12px;
+    }
+    .custom-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 1px 4px;
+      border-radius: 4px;
+      font-size: 8.5px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-left: 6px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="icon32.png" style="width: 28px; height: 28px; border-radius: 6px; object-fit: cover; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);" alt="CreepingScripts Logo">
+      <div class="header-info">
+        <h1>CreepingScripts Workspace</h1>
+        <p>Browser Bookmarklets Controller</p>
+      </div>
+    </div>
+    <button id="toggle-add-panel-btn" class="btn btn-primary" style="flex: none; font-size: 10.5px; padding: 5px 10px; border-radius: 6px; cursor: pointer;">
+      + Add Custom
+    </button>
+  </header>
+  <div class="container">
+    <div class="controls">
+      <input type="text" id="search-bar" class="search-input" placeholder="Search developer tools...">
+      <div class="tabs" id="tabs-container">
+        <button class="tab active" data-category="all">All</button>
+        <button class="tab" data-category="design_layout">Layout</button>
+        <button class="tab" data-category="typography_colors">Colors</button>
+        <button class="tab" data-category="responsive_testing">Responsive</button>
+        <button class="tab" data-category="development_utilities">Dev-Utils</button>
+        <button class="tab" data-category="performance_seo">SEO & Perf</button>
+        <button class="tab" data-category="advanced_tools">Diagnostics</button>
+      </div>
+    </div>
+
+    <!-- Add Custom Snippet Panel (Collapsible) -->
+    <div id="custom-snippet-panel" class="custom-snippet-panel hidden">
+      <h2 class="panel-title">Add Custom Bookmarklet</h2>
+      <div class="form-group">
+        <label for="custom-name">Name</label>
+        <input type="text" id="custom-name" placeholder="e.g. Highlight Large Images">
+      </div>
+      <div class="form-group">
+        <label for="custom-desc">Description</label>
+        <input type="text" id="custom-desc" placeholder="e.g. Outlines images larger than 500px">
+      </div>
+      <div class="form-group">
+        <label for="custom-code">JavaScript Code</label>
+        <textarea id="custom-code" placeholder="javascript:(function() { ... })()"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="custom-category">Category / Tab</label>
+        <select id="custom-category">
+          <option value="design_layout">Layout</option>
+          <option value="typography_colors">Colors</option>
+          <option value="responsive_testing">Responsive</option>
+          <option value="development_utilities">Dev-Utils</option>
+          <option value="performance_seo">SEO & Perf</option>
+          <option value="advanced_tools">Diagnostics</option>
+          <option value="new_category">+ Create New Category</option>
+        </select>
+      </div>
+      <div class="form-group hidden" id="new-category-group">
+        <label for="new-category-name">New Category Name</label>
+        <input type="text" id="new-category-name" placeholder="e.g. Sass Tools">
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-secondary" id="cancel-custom-btn" style="cursor: pointer;">Cancel</button>
+        <button class="btn btn-primary" id="save-custom-btn" style="cursor: pointer;">Save Snippet</button>
+      </div>
+    </div>
+
+    <div id="scripts-list" class="scripts-list"></div>
+    <p style="font-size: 10px; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; font-weight: bold; letter-spacing: 0.05em; margin-top: 12px;">Console Telemetry Logs</p>
+    <div id="logger" class="logger-panel">
+      <div class="log-line">> Toolbar initialized...</div>
+      <div class="log-line">> Select any utility command to trigger on current window.</div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>v1.0.0 Stable | <a href="https://github.com/DrSmoK3y/CreepingScripts-Advance-Browser-Bookmarklets-Extension" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">GitHub Code</a></span>
+    <div class="active-indicator">
+      <span>DrSmoK3y</span>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
