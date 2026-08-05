@@ -1,16 +1,10 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-// Native mirror of tools for autonomous offline extension execution
 const TOOLS = [
   {
     "id": "grid-overlay-80",
     "name": "Grid Overlay (80px)",
     "description": "Adds a subtle 80px grid overlay to check alignment across elements.",
     "category": "design_layout",
-    "code": "// Grid Overlay 80px style\n(function() {\n  const existing = document.getElementById('grid-overlay-80-style');\n  if (existing) {\n    existing.remove();\n    console.log('80px Grid overlay deactivated.');\n  } else {\n    const s = document.createElement('style');\n    s.id = 'grid-overlay-80-style';\n    s.textContent = 'body::before{content:\\\"\\\";position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,0,0,0.08) 79px,rgba(255,0,0,0.08) 80px),repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,0,0,0.08) 79px,rgba(255,0,0,0.08) 80px)}';\n    document.head.appendChild(s);\n    console.log('80px Grid overlay activated.');\n  }\n})();"
+    "code": "// Grid Overlay 80px style\n(function() {\n  const existing = document.getElementById('grid-overlay-80-style');\n  if (existing) {\n    existing.remove();\n    console.log('80px Grid overlay deactivated.');\n  } else {\n    const s = document.createElement('style');\n    s.id = 'grid-overlay-80-style';\n    s.textContent = 'body::before{content:\\\\\"\\\\\";position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,0,0,0.08) 79px,rgba(255,0,0,0.08) 80px),repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,0,0,0.08) 79px,rgba(255,0,0,0.08) 80px)}';\n    document.head.appendChild(s);\n    console.log('80px Grid overlay activated.');\n  }\n})();"
   },
   {
     "id": "grid-overlay-12",
@@ -52,7 +46,7 @@ const TOOLS = [
     "name": "Measure Click Distance",
     "description": "Measure distance between any two selected coordinates on your viewport with automatic horizontal/vertical offsets diagnostics.",
     "category": "design_layout",
-    "code": "// Two-point Canvas Distance Calculator\n(function() {\n  const p = [];\n  const onClk = function(e) {\n    p.push({ x: e.clientX, y: e.clientY });\n    console.log(`Point ${p.length}: ${e.clientX}, ${e.clientY}`);\n    if (p.length === 2) {\n      const dx = p[1].x - p[0].x;\n      const dy = p[1].y - p[0].y;\n      const dist = Math.sqrt(dx*dx + dy*dy).toFixed(1);\n      alert(`Measurement Results:\\n---------------------\\nDistance: ${dist}px\\nHorizontal dX: ${dx}px\\nVertical dY: ${dy}px`);\n      document.removeEventListener('click', onClk);\n    }\n  };\n  document.addEventListener('click', onClk);\n  alert('Distance Measurement Tool Active: Click two distinct points on screen.');\n})();"
+    "code": "// Two-point Canvas Distance Calculator\n(function() {\n  const p = [];\n  const onClk = function(e) {\n    p.push({ x: e.clientX, y: e.clientY });\n    console.log(`Point ${p.length}: ${e.clientX}, ${e.clientY}`);\n    if (p.length === 2) {\n      const dx = p[1].x - p[0].x;\n      const dy = p[1].y - p[0].y;\n      const dist = Math.sqrt(dx*dx + dy*dy).toFixed(1);\n      alert(`Measurement Results:\n---------------------\nDistance: ${dist}px\nHorizontal dX: ${dx}px\nVertical dY: ${dy}px`);\n      document.removeEventListener('click', onClk);\n    }\n  };\n  document.addEventListener('click', onClk);\n  alert('Distance Measurement Tool Active: Click two distinct points on screen.');\n})();"
   },
   {
     "id": "ruler-overlay",
@@ -66,14 +60,14 @@ const TOOLS = [
     "name": "Center Alignment Guides",
     "description": "Pivots vertical and horizontal intersection lines at precisely 50% coordinate points to check symmetric parameters.",
     "category": "design_layout",
-    "code": "// Center Symmetry Grid Guides\n(function() {\n  const existing = document.getElementById('center-alignment-style');\n  if (existing) {\n    existing.remove();\n    console.log('Center safety guides deactivated.');\n  } else {\n    const s = document.createElement('style');\n    s.id = 'center-alignment-style';\n    s.textContent = 'body::before,body::after{content:\\\"\\\";position:fixed;pointer-events:none;z-index:9999;background:rgba(239,68,68,0.45)}body::before{top:50%;left:0;right:0;height:1.5px}body::after{left:50%;top:0;bottom:0;width:1.5px}';\n    document.head.appendChild(s);\n    console.log('Center safety guides activated (symmetric intersections).');\n  }\n})();"
+    "code": "// Center Symmetry Grid Guides\n(function() {\n  const existing = document.getElementById('center-alignment-style');\n  if (existing) {\n    existing.remove();\n    console.log('Center safety guides deactivated.');\n  } else {\n    const s = document.createElement('style');\n    s.id = 'center-alignment-style';\n    s.textContent = 'body::before,body::after{content:\\\\\"\\\\\"position:fixed;pointer-events:none;z-index:9999;background:rgba(239,68,68,0.45)}body::before{top:50%;left:0;right:0;height:1.5px}body::after{left:50%;top:0;bottom:0;width:1.5px}';\n    document.head.appendChild(s);\n    console.log('Center safety guides activated (symmetric intersections).');\n  }\n})();"
   },
   {
     "id": "baseline-grid",
     "name": "Baseline Grid (Typography)",
     "description": "Overlays a repeating 24px baseline pattern grid to align paragraph content blocks.",
     "category": "design_layout",
-    "code": "// typographic 24px baseline grid outliner\n(function() {\n  const existing = document.getElementById('baseline-grid-style');\n  if (existing) {\n    existing.remove();\n    console.log('24px Baseline typography overlay off.');\n  } else {\n    const s = document.createElement('style');\n    s.id = 'baseline-grid-style';\n    s.textContent = 'body::before{content:\\\"\\\";position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(0deg,transparent,transparent 23px,rgba(0,140,255,0.08) 23px,rgba(0,140,255,0.08) 24px)}';\n    document.head.appendChild(s);\n    console.log('24px Baseline typography overlay on.');\n  }\n})();"
+    "code": "// typographic 24px baseline grid outliner\n(function() {\n  const existing = document.getElementById('baseline-grid-style');\n  if (existing) {\n    existing.remove();\n    console.log('24px Baseline typography overlay off.');\n  } else {\n    const s = document.createElement('style');\n    s.id = 'baseline-grid-style';\n    s.textContent = 'body::before{content:\"\";position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(0deg,transparent,transparent 23px,rgba(0,140,255,0.08) 23px,rgba(0,140,255,0.08) 24px)}';\n    document.head.appendChild(s);\n    console.log('24px Baseline typography overlay on.');\n  }\n})();"
   },
   {
     "id": "extract-fonts",
@@ -108,7 +102,7 @@ const TOOLS = [
     "name": "Contrast Click Checker",
     "description": "Click on any element on the page to retrieve foreground color and outer backplate RGB values to check readability.",
     "category": "typography_colors",
-    "code": "// Contrast Check Element Targeter\n(function() {\n  const onClk = function(e) {\n    const el = e.target;\n    if (el) {\n      const s = getComputedStyle(el);\n      console.log(`Contrast Audit for <${el.tagName.toLowerCase()}>:`, {\n        textColor: s.color,\n        backgroundColor: s.backgroundColor,\n        fontSize: s.fontSize,\n        fontWeight: s.fontWeight\n      });\n      alert(`Contrast Details:\\nTag: <${el.tagName.toLowerCase()}>\\nForeground: ${s.color}\\nBackground: ${s.backgroundColor}\\nUse these settings in WCAG checkers to evaluate accessibility compliance!`);\n      document.removeEventListener('click', onClk);\n    }\n    e.preventDefault();\n  };\n  document.addEventListener('click', onClk);\n  alert('Contrast Checker Click Mode Active: Click on a text element.');\n})();"
+    "code": "// Contrast Check Element Targeter\n(function() {\n  const onClk = function(e) {\n    const el = e.target;\n    if (el) {\n      const s = getComputedStyle(el);\n      console.log(`Contrast Audit for <${el.tagName.toLowerCase()}>:`, {\n        textColor: s.color,\n        backgroundColor: s.backgroundColor,\n        fontSize: s.fontSize,\n        fontWeight: s.fontWeight\n      });\n      alert(`Contrast Details:\nTag: <${el.tagName.toLowerCase()}>\nForeground: ${s.color}\nBackground: ${s.backgroundColor}\nUse these settings in WCAG checkers to evaluate accessibility compliance!`);\n      document.removeEventListener('click', onClk);\n    }\n    e.preventDefault();\n  };\n  document.addEventListener('click', onClk);\n  alert('Contrast Checker Click Mode Active: Click on a text element.');\n})();"
   },
   {
     "id": "text-small-highlight",
@@ -136,7 +130,7 @@ const TOOLS = [
     "name": "Color Eye Dropper",
     "description": "Leverages browser EyeDropper API to pick colors directly from viewport elements, outputting HEX values.",
     "category": "typography_colors",
-    "code": "// Native Browser HTML Eye Dropper\n(function() {\n  if (!window.EyeDropper) {\n    alert('The EyeDropper API is not supported in this browser version. Use Chrome/Edge/Brave.');\n    return;\n  }\n  const picker = new window.EyeDropper();\n  console.log('Eye dropper active: click on any pixel...');\n  picker.open().then(result => {\n    console.log('Selected Color Hex Value:', result.sRGBHex);\n    alert(`Extracted Hex: ${result.sRGBHex}\\nCopied to Clipboard!`);\n    navigator.clipboard.writeText(result.sRGBHex);\n  }).catch(err => {\n    console.log('EyeDropper closed without selection.', err);\n  });\n})();"
+    "code": "// Native Browser HTML Eye Dropper\n(function() {\n  if (!window.EyeDropper) {\n    alert('The EyeDropper API is not supported in this browser version. Use Chrome/Edge/Brave.');\n    return;\n  }\n  const picker = new window.EyeDropper();\n  console.log('Eye dropper active: click on any pixel...');\n  picker.open().then(result => {\n    console.log('Selected Color Hex Value:', result.sRGBHex);\n    alert(`Extracted Hex: ${result.sRGBHex}\nCopied to Clipboard!`);\n    navigator.clipboard.writeText(result.sRGBHex);\n  }).catch(err => {\n    console.log('EyeDropper closed without selection.', err);\n  });\n})();"
   },
   {
     "id": "typography-scale-vis",
@@ -206,14 +200,14 @@ const TOOLS = [
     "name": "Scroll Performance Test",
     "description": "Launches a 5-second frequency diagnostics module logging frame rates and rendering limits.",
     "category": "responsive_testing",
-    "code": "// Scroll dispatch listener\n(function() {\n  let scrollCount = 0;\n  const begin = Date.now();\n  const tick = () => { scrollCount++; };\n  \n  window.addEventListener('scroll', tick);\n  console.log('Frequency tracker active for 5 seconds! Slide mouse scroll vigorously.');\n  \n  setTimeout(() => {\n    window.removeEventListener('scroll', tick);\n    const duration = (Date.now() - begin) / 1000;\n    const rate = (scrollCount / duration).toFixed(1);\n    console.log(`Scroll performance database: Captured ${scrollCount} scrolls in ${duration} seconds (~ ${rate} dispatches/sec).`);\n    alert(`Scroll performance database:\\nEvents captured: ${scrollCount}\\nDuration: ${duration}s\\nRun Rate: ${rate} frames/sec\\n\\n(Rates > 60 reflect highly smooth input processing)`);\n  }, 5000);\n})();"
+    "code": "// Scroll dispatch listener\n(function() {\n  let scrollCount = 0;\n  const begin = Date.now();\n  const tick = () => { scrollCount++; };\n  \n  window.addEventListener('scroll', tick);\n  console.log('Frequency tracker active for 5 seconds! Slide mouse scroll vigorously.');\n  \n  setTimeout(() => {\n    window.removeEventListener('scroll', tick);\n    const duration = (Date.now() - begin) / 1000;\n    const rate = (scrollCount / duration).toFixed(1);\n    console.log(`Scroll performance database: Captured ${scrollCount} scrolls in ${duration} seconds (~ ${rate} dispatches/sec).`);\n    alert(`Scroll performance database:\nEvents captured: ${scrollCount}\nDuration: ${duration}s\nRun Rate: ${rate} frames/sec\n\n(Rates > 60 reflect highly smooth input processing)`);\n  }, 5000);\n})();"
   },
   {
     "id": "lazy-img-check",
     "name": "Lazy Load Image Auditor",
     "description": "Highlights lazy-loaded image tags and outlines deferred elements visible within the active fold.",
     "category": "responsive_testing",
-    "code": "// Image lazy load layout checks\n(function() {\n  const images = document.querySelectorAll('img');\n  let lazyCount = 0; let loadedInView = 0;\n  \n  images.forEach(img => {\n    const isLazy = img.getAttribute('loading') === 'lazy' || img.hasAttribute('data-src');\n    if (isLazy) {\n      lazyCount++;\n      const rect = img.getBoundingClientRect();\n      const inView = (rect.top < window.innerHeight && rect.bottom > 0);\n      if (inView) {\n        img.style.outline = '3px dashed #10B981';\n        loadedInView++;\n      } else {\n        img.style.outline = '3px dashed #EF4444';\n      }\n    }\n  });\n  alert(`found ${lazyCount} deferred lazy elements.\\nLoaded in viewport range: ${loadedInView} (highlighted green outlines)\\nRemaining: ${lazyCount - loadedInView} (highlighted off-screen in red)`);\n})();"
+    "code": "// Image lazy load layout checks\n(function() {\n  const images = document.querySelectorAll('img');\n  let lazyCount = 0; let loadedInView = 0;\n  \n  images.forEach(img => {\n    const isLazy = img.getAttribute('loading') === 'lazy' || img.hasAttribute('data-src');\n    if (isLazy) {\n      lazyCount++;\n      const rect = img.getBoundingClientRect();\n      const inView = (rect.top < window.innerHeight && rect.bottom > 0);\n      if (inView) {\n        img.style.outline = '3px dashed #10B981';\n        loadedInView++;\n      } else {\n        img.style.outline = '3px dashed #EF4444';\n      }\n    }\n  });\n  alert(`found ${lazyCount} deferred lazy elements.\nLoaded in viewport range: ${loadedInView} (highlighted green outlines)\nRemaining: ${lazyCount - loadedInView} (highlighted off-screen in red)`);\n})();"
   },
   {
     "id": "inject-jquery-latest",
@@ -262,7 +256,7 @@ const TOOLS = [
     "name": "Show All Form Values",
     "description": "Audits and displays active input string configurations nested within your active webpage sheets.",
     "category": "development_utilities",
-    "code": "// Form database diagnostics\n(function() {\n  const fieldsValues = [];\n  document.querySelectorAll('input, textarea, select').forEach(el => {\n    const identifier = el.getAttribute('name') || el.className || el.tagName.toLowerCase();\n    const val = el.value || (el.checked ? 'Checked' : '');\n    fieldsValues.push(`${identifier}: \"${val}\"`);\n  });\n  if (fieldsValues.length === 0) {\n    alert('No form fields discovered.');\n    return;\n  }\n  alert(`Exposed Form Fields Map:\\n----------------------\\n${fieldsValues.join('\\n')}`);\n})();"
+    "code": "// Form database diagnostics\n(function() {\n  const fieldsValues = [];\n  document.querySelectorAll('input, textarea, select').forEach(el => {\n    const identifier = el.getAttribute('name') || el.className || el.tagName.toLowerCase();\n    const val = el.value || (el.checked ? 'Checked' : '');\n    fieldsValues.push(`${identifier}: \"${val}\"`);\n  });\n  if (fieldsValues.length === 0) {\n    alert('No form fields discovered.');\n    return;\n  }\n  alert(`Exposed Form Fields Map:\n----------------------\n${fieldsValues.join('\\n')}`);\n})();"
   },
   {
     "id": "broken-images-alert",
@@ -290,28 +284,28 @@ const TOOLS = [
     "name": "Audit Page Load Speeds",
     "description": "Calculates performance timing intervals, displaying total page and DOM ready metrics.",
     "category": "performance_seo",
-    "code": "// Read browser performance speed clocks\n(function() {\n  const t = window.performance.timing;\n  const load = (t.loadEventEnd - t.navigationStart) / 1000;\n  const dcl = (t.domContentLoadedEventEnd - t.navigationStart) / 1000;\n  \n  if (load <= 0) {\n    alert('Diagnostics waiting fully loaded resources. Try again in seconds!');\n    return;\n  }\n  alert(`Performance metrics database:\\n-----------------------------\\nDOM Ready Clock: ${dcl.toFixed(3)}s\\nTotal Load clock: ${load.toFixed(3)}s\\n(Speeds under 2s represent high performance standards)`);\n})();"
+    "code": "// Read browser performance speed clocks\n(function() {\n  const t = window.performance.timing;\n  const load = (t.loadEventEnd - t.navigationStart) / 1000;\n  const dcl = (t.domContentLoadedEventEnd - t.navigationStart) / 1000;\n  \n  if (load <= 0) {\n    alert('Diagnostics waiting fully loaded resources. Try again in seconds!');\n    return;\n  }\n  alert(`Performance metrics database:\n-----------------------------\nDOM Ready Clock: ${dcl.toFixed(3)}s\nTotal Load clock: ${load.toFixed(3)}s\n(Speeds under 2s represent high performance standards)`);\n})();"
   },
   {
     "id": "count-page-dom-nodes",
     "name": "Count DOM Elements",
     "description": "Counts total elements, tracking DOM tree depth limits, script references, and container sizing indicators.",
     "category": "performance_seo",
-    "code": "// DOM Elements tree audit density\n(function() {\n  const allNodes = document.querySelectorAll('*').length;\n  const scripts = document.querySelectorAll('script').length;\n  const divs = document.querySelectorAll('div').length;\n  const links = document.querySelectorAll('a').length;\n  \n  alert(`DOM Nesting Density Map:\\n-------------------------\\nTotal tag elements: ${allNodes}\\nContainer divs: ${divs}\\nScript variables: ${scripts}\\nLinks: ${links}\\n\\n(DOM counts under 1200 are optimal for rendering performance)`);\n})();"
+    "code": "// DOM Elements tree audit density\n(function() {\n  const allNodes = document.querySelectorAll('*').length;\n  const scripts = document.querySelectorAll('script').length;\n  const divs = document.querySelectorAll('div').length;\n  const links = document.querySelectorAll('a').length;\n  \n  alert(`DOM Nesting Density Map:\n-------------------------\nTotal tag elements: ${allNodes}\nContainer divs: ${divs}\nScript variables: ${scripts}\nLinks: ${links}\n\n(DOM counts under 1200 are optimal for rendering performance)`);\n})();"
   },
   {
     "id": "approximate-lcp-metric",
     "name": "Approximate LCP Metric",
     "description": "Fetches browser Largest Contentful Paint timing milestones, checking UX performance.",
     "category": "performance_seo",
-    "code": "// Approximate LCP metric parameters\n(function() {\n  const LcpEntries = performance.getEntriesByType('largest-contentful-paint');\n  if (LcpEntries.length === 0) {\n    alert('LCP metrics logging. Move components or refresh.');\n    return;\n  }\n  const primary = LcpEntries[0];\n  const sec = (primary.startTime / 1000).toFixed(3);\n  alert(`Largest Contentful Paint (LCP):\\n-------------------------\\nTiming clock: ${sec} seconds\\nTarget Element: <${primary.element ? primary.element.tagName.toLowerCase() : 'unknown'}>\\n\\n(LCP under 2.5s is optimal for user experience)`);\n})();"
+    "code": "// Approximate LCP metric parameters\n(function() {\n  const LcpEntries = performance.getEntriesByType('largest-contentful-paint');\n  if (LcpEntries.length === 0) {\n    alert('LCP metrics logging. Move components or refresh.');\n    return;\n  }\n  const primary = LcpEntries[0];\n  const sec = (primary.startTime / 1000).toFixed(3);\n  alert(`Largest Contentful Paint (LCP):\n-------------------------\nTiming clock: ${sec} seconds\nTarget Element: <${primary.element ? primary.element.tagName.toLowerCase() : 'unknown'}>\n\n(LCP under 2.5s is optimal for user experience)`);\n})();"
   },
   {
     "id": "cls-layout-shifts",
     "name": "CLS Shifting Metrics",
     "description": "Calculates viewport cumulative layout shifts scores to confirm performance stability.",
     "category": "performance_seo",
-    "code": "// Visual shifts metrics index calculator\n(function() {\n  let cls = 0;\n  const entries = performance.getEntriesByType('layout-shift');\n  entries.forEach(e => {\n    if (!e.hadRecentInput) cls += e.value;\n  });\n  \n  let scale = 'Excellent stability (✅ CLASS PASS)';\n  if (cls > 0.25) scale = 'Heavy layout shifts (🚨 POOR)';\n  else if (cls > 0.1) scale = 'Moderate layout shifts (⚠️ NEEDS WORK)';\n  \n  alert(`Cumulative Layout Shift (CLS):\\n-------------------------------\\nCLS computed Score: ${cls.toFixed(5)}\\nRating: ${scale}`);\n})();"
+    "code": "// Visual shifts metrics index calculator\n(function() {\n  let cls = 0;\n  const entries = performance.getEntriesByType('layout-shift');\n  entries.forEach(e => {\n    if (!e.hadRecentInput) cls += e.value;\n  });\n  \n  let scale = 'Excellent stability (✅ CLASS PASS)';\n  if (cls > 0.25) scale = 'Heavy layout shifts (🚨 POOR)';\n  else if (cls > 0.1) scale = 'Moderate layout shifts (⚠️ NEEDS WORK)';\n  \n  alert(`Cumulative Layout Shift (CLS):\n-------------------------------\nCLS computed Score: ${cls.toFixed(5)}\nRating: ${scale}`);\n})();"
   },
   {
     "id": "extract-seo-metadata",
@@ -325,7 +319,7 @@ const TOOLS = [
     "name": "Heading Structure Checker",
     "description": "Exposes structural headings on browser consoles, verifying hierarchy requirements.",
     "category": "performance_seo",
-    "code": "// Headings Hierarchy compliance\n(function() {\n  const tree = [];\n  const h1Count = document.querySelectorAll('h1').length;\n  \n  document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(h => {\n    tree.push(`${h.tagName}: \"${h.textContent.trim().substring(0, 50)}\"`);\n  });\n  \n  console.log('%cHeading Structure Tree Map:', 'font-size:15px; font-weight:bold; color:#16A34A', tree);\n  \n  let h1Status = '✓ H1 Count correct';\n  if (h1Count === 0) h1Status = '⚠️ CRITICAL: Missing H1 page header!';\n  else if (h1Count > 1) h1Status = '⚠️ WARNING: Multiple H1 headers violate standards!';\n  \n  alert(`Heading Hierarchy Statistics:\\n-------------------------\\nTotal headings nodes: ${tree.length}\\nH1 count status: ${h1Count} (${h1Status})\\n\\nComplete outline cataloged in console prints!`);\n})();"
+    "code": "// Headings Hierarchy compliance\n(function() {\n  const tree = [];\n  const h1Count = document.querySelectorAll('h1').length;\n  \n  document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(h => {\n    tree.push(`${h.tagName}: \"${h.textContent.trim().substring(0, 50)}\"`);\n  });\n  \n  console.log('%cHeading Structure Tree Map:', 'font-size:15px; font-weight:bold; color:#16A34A', tree);\n  \n  let h1Status = '✓ H1 Count correct';\n  if (h1Count === 0) h1Status = '⚠️ CRITICAL: Missing H1 page header!';\n  else if (h1Count > 1) h1Status = '⚠️ WARNING: Multiple H1 headers violate standards!';\n  \n  alert(`Heading Hierarchy Statistics:\n-------------------------\nTotal headings nodes: ${tree.length}\nH1 count status: ${h1Count} (${h1Status})\n\nComplete outline cataloged in console prints!`);\n})();"
   },
   {
     "id": "highlight-empty-links",
@@ -374,7 +368,7 @@ const TOOLS = [
     "name": "JavaScript Memory Heap",
     "description": "Calculates JS Heap allocation scopes using internal browser performance memory trackers.",
     "category": "advanced_tools",
-    "code": "// Memory heap diagnostics\n(function() {\n  const m = performance.memory;\n  if (!m) {\n    alert('Diagnostics require Chrome browser with precise memory indicators turned on.');\n    return;\n  }\n  const used = (m.usedJSHeapSize / 1048576).toFixed(2);\n  const total = (m.totalJSHeapSize / 1048576).toFixed(2);\n  const limit = (m.jsHeapSizeLimit / 1048576).toFixed(2);\n  \n  alert(`JS heap memory allocation metrics:\\n------------------------------------\\nUsed: ${used} MB\\nTotal: ${total} MB\\nLimit: ${limit} MB\\n\\n(Memory stays efficient under 50MB for standard apps)`);\n})();"
+    "code": "// Memory heap diagnostics\n(function() {\n  const m = performance.memory;\n  if (!m) {\n    alert('Diagnostics require Chrome browser with precise memory indicators turned on.');\n    return;\n  }\n  const used = (m.usedJSHeapSize / 1048576).toFixed(2);\n  const total = (m.totalJSHeapSize / 1048576).toFixed(2);\n  const limit = (m.jsHeapSizeLimit / 1048576).toFixed(2);\n  \n  alert(`JS heap memory allocation metrics:\n------------------------------------\nUsed: ${used} MB\nTotal: ${total} MB\nLimit: ${limit} MB\n\n(Memory stays efficient under 50MB for standard apps)`);\n})();"
   },
   {
     "id": "find-duplicated-element-id",
@@ -423,14 +417,14 @@ const TOOLS = [
     "name": "Export Layout as Markdown",
     "description": "Parses headings and paragraphs into standard formatted Markdown text inside console logs.",
     "category": "advanced_tools",
-    "code": "// Dynamic DOM content writer to Markdown converter\n(function() {\n  let markdown = '';\n  document.querySelectorAll('h1, h2, h3, h4, p, li').forEach(el => {\n    const text = el.textContent.trim();\n    if (text === '') return;\n    \n    const tag = el.tagName.toLowerCase();\n    if (tag === 'h1') markdown += `# ${text}\\n\\n`;\n    else if (tag === 'h2') markdown += `## ${text}\\n\\n`;\n    else if (tag === 'h3') markdown += `### ${text}\\n\\n`;\n    else if (tag === 'li') markdown += `- ${text}\\n`;\n    else markdown += `${text}\\n\\n`;\n  });\n  \n  console.log('%cConverted Page Markdown Bundle:', 'font-size:15px; font-weight:bold; color:#10B981');\n  console.log(markdown);\n  alert('SUCCESS: Clean Markdown exported directly to developer console!');\n})();"
+    "code": "// Dynamic DOM content writer to Markdown converter\n(function() {\n  let markdown = '';\n  document.querySelectorAll('h1, h2, h3, h4, p, li').forEach(el => {\n    const text = el.textContent.trim();\n    if (text === '') return;\n    \n    const tag = el.tagName.toLowerCase();\n    if (tag === 'h1') markdown += `# ${text}\n\n`;\n    else if (tag === 'h2') markdown += `## ${text}\n\n`;\n    else if (tag === 'h3') markdown += `### ${text}\n\n`;\n    else if (tag === 'li') markdown += `- ${text}\n`;\n    else markdown += `${text}\n\n`;\n  });\n  \n  console.log('%cConverted Page Markdown Bundle:', 'font-size:15px; font-weight:bold; color:#10B981');\n  console.log(markdown);\n  alert('SUCCESS: Clean Markdown exported directly to developer console!');\n})();"
   },
   {
     "id": "alt-text-audit",
     "name": "Image Alt Text Audit",
     "description": "Finds and highlights all images on the page, overlaying red borders on those missing descriptive alt attributes.",
     "category": "performance_seo",
-    "code": "// Visual alt text checker and highlighter\n(function() {\n  const imgs = document.querySelectorAll('img');\n  let missingCount = 0;\n  imgs.forEach(img => {\n    if (!img.alt || img.alt.trim() === '') {\n      img.style.outline = '3px dashed #ef4444';\n      img.style.outlineOffset = '2px';\n      missingCount++;\n      console.warn('Missing ALT tag for image:', img.src);\n    } else {\n      img.style.outline = '3px dashed #10b981';\n      img.style.outlineOffset = '2px';\n    }\n  });\n  console.log(`Alt text check complete: ${missingCount} missing, ${imgs.length - missingCount} present.`);\n  alert(`Alt Text Audit Completed!\\nImages missing alt text: ${missingCount}\\nImages with alt text: ${imgs.length - missingCount}`);\n})();"
+    "code": "// Visual alt text checker and highlighter\n(function() {\n  const imgs = document.querySelectorAll('img');\n  let missingCount = 0;\n  imgs.forEach(img => {\n    if (!img.alt || img.alt.trim() === '') {\n      img.style.outline = '3px dashed #ef4444';\n      img.style.outlineOffset = '2px';\n      missingCount++;\n      console.warn('Missing ALT tag for image:', img.src);\n    } else {\n      img.style.outline = '3px dashed #10b981';\n      img.style.outlineOffset = '2px';\n    }\n  });\n  console.log(`Alt text check complete: ${missingCount} missing, ${imgs.length - missingCount} present.`);\n  alert(`Alt Text Audit Completed!\nImages missing alt text: ${missingCount}\nImages with alt text: ${imgs.length - missingCount}`);\n})();"
   },
   {
     "id": "convert-to-grayscale",
@@ -500,7 +494,7 @@ const TOOLS = [
     "name": "Disable All Styles",
     "description": "Deactivates all linked stylesheets and internal styles to test layout semantic readability without CSS.",
     "category": "design_layout",
-    "code": "// Disable all linked & embedded stylesheets\n(function() {\n  for (let i = 0; i < document.styleSheets.length; i++) {\n    document.styleSheets[i].disabled = true;\n  }\n  const inline = document.querySelectorAll('style, [style]');\n  inline.forEach(el => {\n    if (el.tagName === 'STYLE') {\n      (el as HTMLStyleElement).disabled = true;\n    } else {\n      el.removeAttribute('style');\n    }\n  });\n  console.log('All page styles disabled.');\n  alert('All linked and inline styles disabled!');\n})();"
+    "code": "// Disable all linked & embedded stylesheets\n(function() {\n  for (let i = 0; i < document.styleSheets.length; i++) {\n    document.styleSheets[i].disabled = true;\n  }\n  const inline = document.querySelectorAll('style, [style]');\n  inline.forEach(el => {\n    if (el.tagName === 'STYLE') {\n      el.disabled = true;\n    } else {\n      el.removeAttribute('style');\n    }\n  });\n  console.log('All page styles disabled.');\n  alert('All linked and inline styles disabled!');\n})();"
   },
   {
     "id": "display-hidden-elements",
@@ -591,7 +585,7 @@ const TOOLS = [
     "name": "Word & Selection Counter",
     "description": "Returns precise character & word counts of either selected text or the entire page text content.",
     "category": "development_utilities",
-    "code": "// Retrieve text metrics\n(function() {\n  const selection = window.getSelection().toString();\n  const text = selection || document.body.innerText;\n  const sourceLabel = selection ? \"Selection text\" : \"Full Page body text\";\n  const charCount = text.length;\n  const wordCount = text.trim().split(/\\s+/).filter(Boolean).length;\n  alert(`Metrics [${sourceLabel}]:\\n---------------------\\nWords: ${wordCount}\\nCharacters: ${charCount}`);\n  console.log(`Word count: ${wordCount} | Character count: ${charCount}`);\n})();"
+    "code": "// Retrieve text metrics\n(function() {\n  const selection = window.getSelection().toString();\n  const text = selection || document.body.innerText;\n  const sourceLabel = selection ? \"Selection text\" : \"Full Page body text\";\n  const charCount = text.length;\n  const wordCount = text.trim().split(/\\s+/).filter(Boolean).length;\n  alert(`Metrics [${sourceLabel}]:\n---------------------\nWords: ${wordCount}\nCharacters: ${charCount}`);\n  console.log(`Word count: ${wordCount} | Character count: ${charCount}`);\n})();"
   },
   {
     "id": "aria-roles-auditor",
@@ -815,7 +809,7 @@ const TOOLS = [
     "name": "XML Sitemap Finder & Analyzer",
     "description": "Queries sitemap.xml and sitemap-index.xml locations, auditing server HTTP response codes and indexing configurations.",
     "category": "performance_seo",
-    "code": "// XML Sitemap Detector & Status Auditor\n(() => {\n  const t = new URL(window.location.href);\n  const locations = [\n    `${t.protocol}//${t.hostname}/sitemap.xml`,\n    `${t.protocol}//${t.hostname}/sitemap-index.xml`\n  ];\n  Promise.all(locations.map(url => \n    fetch(url)\n      .then(res => ({ url, status: res.ok, statusCode: res.status }))\n      .catch(() => ({ url, status: false, statusCode: 404 }))\n  )).then(results => {\n    const popup = document.createElement(\"div\");\n    popup.className = \"seo-popup\";\n    popup.style.cssText = `\n      position: fixed;\n      top: 20px;\n      right: 20px;\n      width: 80%;\n      max-width: 600px;\n      max-height: 80vh;\n      background: #ffffff;\n      color: #0f172a;\n      padding: 20px;\n      border-radius: 8px;\n      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);\n      z-index: 100000;\n      overflow-y: auto;\n      font-family: system-ui, -apple-system, sans-serif;\n      border: 1px solid #e2e8f0;\n    `;\n    const foundCount = results.filter(r => r.status).length;\n    popup.innerHTML = `\n      <div style=\"display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;\">\n        <h3 style=\"margin: 0; font-size: 16px;\">XML Sitemap Analysis</h3>\n        <button onclick=\"this.closest('.seo-popup').remove()\" style=\"background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:12px;\">Close</button>\n      </div>\n      <div style=\"margin-bottom: 15px; padding: 10px; border: 1px solid ${foundCount ? '#10b981' : '#ef4444'}; background: \u000balue = ${foundCount ? '#ecfdf5' : '#fef2f2'}; border-radius: 6px;\">\n        <strong style=\"color: ${foundCount ? '#065f46' : '#991b1b'}\">\n          ${foundCount ? `Found ${foundCount} sitemap file(s)` : 'No standard sitemaps found'}\n        </strong>\n      </div>\n      <h4 style=\"margin: 0 0 8px; font-size:14px;\">Locations Checked:</h4>\n      ${results.map(r => `\n        <div style=\"padding: 8px; margin-bottom: 8px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; font-family: monospace; word-break: break-all;\">\n          <span style=\"color: ${r.status ? '#10b981' : '#ef4444'}; font-size: 14px; margin-right: 6px;\">●</span>\n          <a href=\"${r.url}\" target=\"_blank\" style=\"color:#2563eb; text-decoration:underline;\">${r.url}</a>\n          <div style=\"margin-top: 4px; color: #64748b;\">HTTP Status: <strong>${r.statusCode}</strong></div>\n        </div>\n      `).join('')}\n    `;\n    document.body.appendChild(popup);\n  });\n})();"
+    "code": "// XML Sitemap Detector & Status Auditor\n(() => {\n  const t = new URL(window.location.href);\n  const locations = [\n    `${t.protocol}//${t.hostname}/sitemap.xml`,\n    `${t.protocol}//${t.hostname}/sitemap-index.xml`\n  ];\n  Promise.all(locations.map(url => \n    fetch(url)\n      .then(res => ({ url, status: res.ok, statusCode: res.status }))\n      .catch(() => ({ url, status: false, statusCode: 404 }))\n  )).then(results => {\n    const popup = document.createElement(\"div\");\n    popup.className = \"seo-popup\";\n    popup.style.cssText = `\n      position: fixed;\n      top: 20px;\n      right: 20px;\n      width: 80%;\n      max-width: 600px;\n      max-height: 80vh;\n      background: #ffffff;\n      color: #0f172a;\n      padding: 20px;\n      border-radius: 8px;\n      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);\n      z-index: 100000;\n      overflow-y: auto;\n      font-family: system-ui, -apple-system, sans-serif;\n      border: 1px solid #e2e8f0;\n    `;\n    const foundCount = results.filter(r => r.status).length;\n    popup.innerHTML = `\n      <div style=\"display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;\">\n        <h3 style=\"margin: 0; font-size: 16px;\">XML Sitemap Analysis</h3>\n        <button onclick=\"this.closest('.seo-popup').remove()\" style=\"background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:12px;\">Close</button>\n      </div>\n      <div style=\"margin-bottom: 15px; padding: 10px; border: 1px solid ${foundCount ? '#10b981' : '#ef4444'}; background: ${foundCount ? '#ecfdf5' : '#fef2f2'}; border-radius: 6px;\">\n        <strong style=\"color: ${foundCount ? '#065f46' : '#991b1b'}\">\n          ${foundCount ? `Found ${foundCount} sitemap file(s)` : 'No standard sitemaps found'}\n        </strong>\n      </div>\n      <h4 style=\"margin: 0 0 8px; font-size:14px;\">Locations Checked:</h4>\n      ${results.map(r => `\n        <div style=\"padding: 8px; margin-bottom: 8px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; font-family: monospace; word-break: break-all;\">\n          <span style=\"color: ${r.status ? '#10b981' : '#ef4444'}; font-size: 14px; margin-right: 6px;\">●</span>\n          <a href=\"${r.url}\" target=\"_blank\" style=\"color:#2563eb; text-decoration:underline;\">${r.url}</a>\n          <div style=\"margin-top: 4px; color: #64748b;\">HTTP Status: <strong>${r.statusCode}</strong></div>\n        </div>\n      `).join('')}\n    `;\n    document.body.appendChild(popup);\n  });\n})();"
   },
   {
     "id": "dev-unused-css",
@@ -823,20 +817,65 @@ const TOOLS = [
     "description": "Analyzes the stylesheet rules in relation to active elements inside the DOM to report any unused CSS rules.",
     "category": "web_development",
     "code": "// Unused CSS stylesheet rule checker\n(() => {\n  const stylesheets = document.querySelectorAll('style, link[rel=\"stylesheet\"]');\n  const unusedRules = [];\n  const allElements = document.getElementsByTagName(\"*\");\n  \n  stylesheets.forEach(sheetEl => {\n    let rules;\n    if (sheetEl.tagName === \"STYLE\") {\n      rules = Array.from(sheetEl.sheet?.cssRules || []);\n    } else {\n      try {\n        rules = Array.from(sheetEl.sheet?.cssRules || []);\n      } catch (e) {\n        return; // CORS restriction\n      }\n    }\n    \n    rules.forEach(rule => {\n      if (rule instanceof CSSStyleRule) {\n        let isUsed = false;\n        for (const el of allElements) {\n          try {\n            if (el.matches(rule.selectorText)) {\n              isUsed = true;\n              break;\n            }\n          } catch (err) {}\n        }\n        if (!isUsed) {\n          unusedRules.push({\n            selector: rule.selectorText,\n            styles: rule.style.cssText,\n            source: sheetEl.tagName === \"STYLE\" ? \"Internal Stylesheet\" : sheetEl.href\n          });\n        }\n      }\n    });\n  });\n\n  const container = document.createElement(\"div\");\n  container.className = \"unused-css-popup\";\n  container.style.cssText = `\n    position: fixed;\n    top: 20px;\n    right: 20px;\n    width: 600px;\n    max-height: 80vh;\n    padding: 20px;\n    background: #ffffff;\n    color: #0f172a;\n    border-radius: 8px;\n    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);\n    z-index: 100000;\n    overflow-y: auto;\n    font-family: system-ui, -apple-system, sans-serif;\n    border: 1px solid #e2e8f0;\n  `;\n  \n  container.innerHTML = `\n    <div style=\"display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;\">\n      <strong style=\"font-size: 16px;\">Unused CSS Detector</strong>\n      <button onclick=\"this.closest('.unused-css-popup').remove()\" style=\"background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:12px;\">✕</button>\n    </div>\n    <div style=\"margin-bottom: 15px; font-weight: bold; font-size: 14px;\">\n      Total Unused Rules Found: ${unusedRules.length}\n    </div>\n    <div style=\"display: flex; flex-direction: column; gap: 12px;\">\n      ${unusedRules.map(rule => `\n        <div style=\"padding: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 12px; font-family: monospace;\">\n          <div style=\"margin-bottom: 4px; color: #1e293b;\"><strong>Selector:</strong> ${rule.selector}</div>\n          <div style=\"margin-bottom: 4px; color: #475569; white-space: pre-wrap; word-break: break-all;\"><strong>Styles:</strong> ${rule.styles}</div>\n          <div style=\"font-size: 11px; color: #64748b; word-break: break-all;\"><strong>Source:</strong> ${rule.source}</div>\n        </div>\n      `).join('')}\n    </div>\n    ${unusedRules.length === 0 ? '<div style=\"color: #10b981; font-weight: bold;\">No unused CSS rules found on this page. Perfect!</div>' : ''}\n  `;\n  document.body.appendChild(container);\n  console.log('Unused CSS analyzer complete. Rules found:', unusedRules.length);\n})();"
+  },
+  {
+    "id": "redirect-popunder-blocker",
+    "name": "Redirect & Popunder Blocker",
+    "description": "Blocks window.open rate-limiting, popup features, target=\"_blank\" hijackers, and click-trap popunder ads.",
+    "category": "penetration_testing",
+    "code": "// Redirect & Popunder Blocker (PopKiller)\n(function(){\n  if (window.__popKillerActive) { alert('Pop-killer already active!'); return; }\n  window.__popKillerActive = true;\n\n  // ---- 1. Control window.open ----\n  var nativeOpen = window.open;\n  var lastOpenTime = 0;\n  var OPEN_COOLDOWN = 1500; // ms - iske andar sirf 1 open allowed\n\n  window.open = function(url, target, features) {\n    var now = Date.now();\n    if (now - lastOpenTime < OPEN_COOLDOWN) {\n      console.log('[PopKiller] Blocked extra window.open ->', url);\n      return null; // block duplicate/rapid fire opens\n    }\n    lastOpenTime = now;\n\n    // agar features string mein window ko chhupane/move karne ke signs hain (popunder style)\n    if (features && /width=|height=|left=|top=/.test(features)) {\n      console.log('[PopKiller] Blocked suspicious sized popup ->', url);\n      return null;\n    }\n\n    var win = nativeOpen.call(window, url, target, features);\n    if (win) {\n      // agar phir bhi khul jaye, turant blur karke apne page ko focus wapas do\n      setTimeout(function(){\n        try { win.blur(); } catch(e){}\n        window.focus();\n      }, 0);\n    }\n    return win;\n  };\n\n  // ---- 2. Kill hidden/fake full-page click hijackers ----\n  document.addEventListener('click', function(e){\n    var el = e.target;\n    // agar click ek aisay anchor pe hua jiska href kuch aur hai but JS ne target replace kar diya\n    while (el && el.tagName !== 'A') el = el.parentElement;\n    if (el && el.target === '_blank' && !el.hasAttribute('rel')) {\n      console.log('[PopKiller] _blank link clicked:', el.href);\n    }\n  }, true);\n\n  // ---- 3. Beforeunload / redirect ke against halka sa guard ----\n  var navAttempts = 0;\n  window.addEventListener('beforeunload', function(e){\n    navAttempts++;\n  });\n\n  console.log('%c[PopKiller] Active ✅ window.open ab rate-limited + auto-blurred hai', 'color:lime');\n  alert('[PopKiller] Active ✅ Redirect & Popunder protection enabled!');\n})();"
+  },
+  {
+    "id": "endpoint-extractor",
+    "name": "Endpoint Extractor",
+    "description": "Scrapes, categorizes, and extracts all script URLs and API endpoints on the current page.",
+    "category": "penetration_testing",
+    "code": "// Endpoint Extractor\n(async()=>{\n  const r=new RegExp(\"(?<=(\\\"|'|\\\\x60))\\\\/[a-zA-Z0-9_?&=\\\\ handling/\\\\-#\\\\.]*(?=(\\\"|'|\\\\x60))\",\"g\"),e=new Set,t=document.getElementsByTagName(\"script\"),n=t=>{const a=t.matchAll(r);for(const t of a)e.add(t[0])};\n  await Promise.all(Array.from(t).map(async t=>{try{t.src?n(await(await fetch(t.src)).text()):n(t.innerHTML)}catch(t){console.warn(\"Script fetch error:\",t)}})),n(document.documentElement.outerHTML);\n  const d=location.origin,paths=[...e];\n  const categorizeEndpoints=paths=>{const categories={apis:[],js:[],html:[],css:[],json:[],xml:[],images:[],other:[]};return paths.forEach(p=>{if(p.match(/\\.js$/i))categories.js.push(p);else if(p.match(/\\.html?$/i))categories.html.push(p);else if(p.match(/\\.css$/i))categories.css.push(p);else if(p.match(/\\.json$/i))categories.json.push(p);else if(p.match(/\\.xml$/i))categories.xml.push(p);else if(p.match(/\\.(png|jpg|jpeg|gif|svg|webp|ico)$/i))categories.images.push(p);else if(p.match(/^\\/api\\//i)||p.match(/^\\/v\\d+\\//i))categories.apis.push(p);else categories.other.push(p)}),categories},cats=categorizeEndpoints(paths),win=window.open(\"\",\"_blank\",\"width=1200,height=700,scrollbars=yes\");\n  if(!win)return alert(\"Popup blocked. Please allow popups.\");\n  const style='<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#0f0f0f;color:#e0e0e0;font-family:monospace;padding:20px}h2{color:#4fc3f7;margin-bottom:5px}p{color:#888;margin-bottom:15px}button,input{margin:5px;padding:10px;background:#222;color:#e0e0e0;border:1px solid #4fc3f7;cursor:pointer;font-family:monospace}button:hover{background:#333}input{width:300px}.tab-btn{background:#1a1a1a;color:#aaa;padding:10px 15px;margin:3px}.tab-btn.active{background:#4fc3f7;color:#000;font-weight:bold}.tab-content{display:none;margin-top:15px;max-height:700px;overflow-y:auto}.tab-content.active{display:block}ul{list-style:none;padding:0}li{padding:8px;margin:2px 0;background:#1a1a1a;border-left:3px solid #4fc3f7}li a{color:#4fc3f7;text-decoration:none;display:block}li a:hover{color:#81d4fa;text-decoration:underline}.footer{margin-top:20px;padding-top:15px;border-top:1px solid #333;color:#666}</style>';\n  const html='<html><head><title>Endpoint Extractor - Rezy Dev</title>'+style+'</head><body><h2>Endpoint Extractor</h2><p>Found '+paths.length+' endpoints</p><div><button id=cpbtn>Copy</button><button id=dlbtn>Download</button><input id=filt placeholder=\"Filter endpoints...\"></div><div style=\"margin-top:15px\"><button class=\"tab-btn active\" data-tab=\"all\">All ('+paths.length+')</button>'+(cats.apis.length?'<button class=\"tab-btn\" data-tab=\"apis\">APIs ('+cats.apis.length+')</button>':'')+(cats.js.length?'<button class=\"tab-btn\" data-tab=\"js\">JS ('+cats.js.length+')</button>':'')+(cats.html.length?'<button class=\"tab-btn\" data-tab=\"html\">HTML ('+cats.html.length+')</button>':'')+(cats.css.length?'<button class=\"tab-btn\" data-tab=\"css\">CSS ('+cats.css.length+')</button>':'')+(cats.json.length?'<button class=\"tab-btn\" data-tab=\"json\">JSON ('+cats.json.length+')</button>':'')+(cats.xml.length?'<button class=\"tab-btn\" data-tab=\"xml\">XML ('+cats.xml.length+')</button>':'')+(cats.images.length?'<button class=\"tab-btn\" data-tab=\"images\">Images ('+cats.images.length+')</button>':'')+(cats.other.length?'<button class=\"tab-btn\" data-tab=\"other\">Other ('+cats.other.length+')</button>':'')+'</div><div id=\"tab-all\" class=\"tab-content active\"><ul id=list-all></ul></div><div id=\"tab-apis\" class=\"tab-content\"><ul id=list-apis></ul></div><div id=\"tab-js\" class=\"tab-content\"><ul id=list-js></ul></div><div id=\"tab-html\" class=\"tab-content\"><ul id=list-html></ul></div><div id=\"tab-css\" class=\"tab-content\"><ul id=list-css></ul></div><div id=\"tab-json\" class=\"tab-content\"><ul id=list-json></ul></div><div id=\"tab-xml\" class=\"tab-content\"><ul id=list-xml></ul></div><div id=\"tab-images\" class=\"tab-content\"><ul id=list-images></ul></div><div id=\"tab-other\" class=\"tab-content\"><ul id=list-other></ul></div><div class=\"footer\">Built with ❤️ by <a href=\"https://rezydev.com/\" target=\"_blank\" style=\"color:#4fc3f7\">Rezy Dev</a></div></body></html>';\n  win.document.write(html);\n  win.document.close();\n  const populateList=(id,items)=>{const ul=win.document.getElementById(id);items.forEach(p=>{const li=win.document.createElement(\"li\");const a=win.document.createElement(\"a\");a.href=d+p;a.target=\"_blank\";a.textContent=p;li.appendChild(a);ul.appendChild(li)})};\n  populateList(\"list-all\",paths);populateList(\"list-apis\",cats.apis);populateList(\"list-js\",cats.js);populateList(\"list-html\",cats.html);populateList(\"list-css\",cats.css);populateList(\"list-json\",cats.json);populateList(\"list-xml\",cats.xml);populateList(\"list-images\",cats.images);populateList(\"list-other\",cats.other);\n  win.document.querySelectorAll(\".tab-btn\").forEach(b=>b.onclick=function(){win.document.querySelectorAll(\".tab-content\").forEach(t=>t.classList.remove(\"active\"));win.document.querySelectorAll(\".tab-btn\").forEach(t=>t.classList.remove(\"active\"));win.document.getElementById(\"tab-\"+b.getAttribute(\"data-tab\")).classList.add(\"active\");b.classList.add(\"active\")});\n  win.document.getElementById(\"cpbtn\").onclick=function(){const ul=win.document.querySelector(\".tab-content.active ul\");const items=Array.from(ul.querySelectorAll(\"li a\")).map(a=>a.textContent).join(\"\\n\");const ta=win.document.createElement(\"textarea\");ta.value=items;win.document.body.appendChild(ta);ta.select();win.document.execCommand(\"copy\");win.document.body.removeChild(ta);win.alert(\"Copied!\")};\n  win.document.getElementById(\"dlbtn\").onclick=function(){const ul=win.document.querySelector(\".tab-content.active ul\");const items=Array.from(ul.querySelectorAll(\"li a\")).map(a=>a.textContent).join(\"\\n\");const b=new Blob([items],{type:\"text/plain\"}),u=URL.createObjectURL(b),a=win.document.createElement(\"a\");a.href=u;a.download=\"endpoints.txt\";a.click();URL.revokeObjectURL(u)};\n  win.document.getElementById(\"filt\").oninput=function(){const f=this.value.toLowerCase();const ul=win.document.querySelector(\".tab-content.active ul\");ul.querySelectorAll(\"li\").forEach(li=>{const txt=li.textContent.toLowerCase();li.style.display=txt.includes(f)?\"block\":\"none\"})};\n})();"
+  },
+  {
+    "id": "performance-graph",
+    "name": "Website Performance Graph",
+    "description": "Injects a real-time visual timeline and waterfall graph of page asset loading performance.",
+    "category": "performance_seo",
+    "code": "// Performance Bookmarklet Graph\n(function(){\n  var el=document.createElement('script');\n  el.type='text/javascript';\n  el.src='https://micmro.github.io/performance-bookmarklet/dist/performanceBookmarklet.min.js';\n  el.onerror=function(){\n    alert(\"Content Security Policy directive is blocking the use of bookmarklets\\n\\nYou can copy and paste the content of:\\n\\n\\\"https://micmro.github.io/performance-bookmarklet/dist/performanceBookmarklet.min.js\\\"\\n\\ninto your console instead\");\n    console.log(\"https://micmro.github.io/performance-bookmarklet/dist/performanceBookmarklet.min.js\");\n  };\n  document.getElementsByTagName('body')[0].appendChild(el);\n})();"
+  },
+  {
+    "id": "single-click-image-downloader",
+    "name": "Single Click Image Downloader",
+    "description": "Click any image on the webpage to instantly download it.",
+    "category": "development_utilities",
+    "code": "// Single Click Image Downloader\n(function(){\n  document.addEventListener(\"click\", function(e){\n    let img = e.target.closest(\"img\");\n    if(!img) return;\n    e.preventDefault();\n    e.stopPropagation();\n    let url = img.currentSrc || img.src;\n    let a = document.createElement(\"a\");\n    a.href = url;\n    a.download = url.split(\"/\").pop().split(\"?\")[0] || \"image\";\n    document.body.appendChild(a);\n    a.click();\n    a.remove();\n  }, true);\n  alert(\"Image Auto Save Enabled\");\n})();"
   }
 ];
 
+
+// Application State
 let query = '';
 let selectedCategory = 'all';
+let currentActiveView = 'main'; // 'main' or 'auto_rules'
 let customTools = [];
+let pinnedToolIds = [];
+let autoRules = [];
+let autoEngineEnabled = true;
+let activeTabInfo = { url: '', hostname: 'localhost', id: null };
 
-// DOM elements
+// DOM Elements
 const searchBar = document.getElementById('search-bar');
 const scriptsList = document.getElementById('scripts-list');
 const logger = document.getElementById('logger');
 const tabsContainer = document.getElementById('tabs-container');
+const mainToolsView = document.getElementById('main-tools-view');
+const autoRulesView = document.getElementById('auto-rules-view');
+const toggleRulesViewBtn = document.getElementById('toggle-rules-view-btn');
+const autoRulesCountBadge = document.getElementById('auto-rules-count-badge');
+const tabRulesCount = document.getElementById('tab-rules-count');
+const autoEngineToggle = document.getElementById('auto-engine-toggle');
+const engineStatusTag = document.getElementById('engine-status-tag');
+const activeTabDomainName = document.getElementById('active-tab-domain-name');
+const quickAddRuleBtn = document.getElementById('quick-add-rule-btn');
+const autoRulesList = document.getElementById('auto-rules-list');
 
-// Custom Panel DOM elements
+// Custom Snippet DOM Elements
 const toggleAddPanelBtn = document.getElementById('toggle-add-panel-btn');
 const customSnippetPanel = document.getElementById('custom-snippet-panel');
 const customNameInput = document.getElementById('custom-name');
@@ -848,37 +887,161 @@ const newCategoryNameInput = document.getElementById('new-category-name');
 const cancelCustomBtn = document.getElementById('cancel-custom-btn');
 const saveCustomBtn = document.getElementById('save-custom-btn');
 
-// Log messaging helper
-function logMessage(text) {
+// Auto-Rule Editor DOM Elements
+const autoRuleEditorPanel = document.getElementById('auto-rule-editor-panel');
+const ruleEditorTitle = document.getElementById('rule-editor-title');
+const editRuleIdInput = document.getElementById('edit-rule-id');
+const ruleNameInput = document.getElementById('rule-name');
+const ruleToolSelect = document.getElementById('rule-tool-select');
+const ruleUrlPatternInput = document.getElementById('rule-url-pattern');
+const ruleTimingSelect = document.getElementById('rule-timing');
+const cancelRuleBtn = document.getElementById('cancel-rule-btn');
+const saveRuleBtn = document.getElementById('save-rule-btn');
+const chipCurrentDomain = document.getElementById('chip-current-domain');
+
+// Log Messaging Helper
+function logMessage(text, isAutoRule = false) {
+  if (!logger) return;
   const line = document.createElement('div');
-  line.className = 'log-line';
+  line.className = 'log-line' + (isAutoRule ? ' log-auto-rule' : '');
   line.textContent = `> ${text}`;
   logger.appendChild(line);
   logger.scrollTop = logger.scrollHeight;
 }
 
-// Storage Helpers
-let pinnedToolIds = [];
+// URL Pattern Matcher Helper
+function matchUrlPattern(patternStr, testUrl) {
+  if (!patternStr || !testUrl) return false;
+  patternStr = patternStr.trim();
+  if (patternStr === '*' || patternStr === '<all_urls>' || patternStr === '*://*/*') return true;
 
-function loadCustomTools(callback) {
+  const patterns = patternStr.split(/[\n,\|]+/).map(p => p.trim()).filter(Boolean);
+  
+  for (const pat of patterns) {
+    if (pat.startsWith('regex:')) {
+      try {
+        const re = new RegExp(pat.slice(6).trim(), 'i');
+        if (re.test(testUrl)) return true;
+      } catch (e) {
+        console.warn('Invalid regex pattern:', pat, e);
+      }
+      continue;
+    }
+
+    let urlObj;
+    try {
+      urlObj = new URL(testUrl);
+    } catch (e) {
+      urlObj = null;
+    }
+
+    let cleaned = pat;
+    if (!cleaned.includes('*') && !cleaned.includes('://') && !cleaned.includes('/')) {
+      cleaned = '*' + cleaned + '*';
+    }
+
+    const regexStr = '^' + cleaned
+      .replace(/[.+^${}()|[\]\\]/g, '\\$&')
+      .replace(/\*/g, '.*')
+      .replace(/\?/g, '.') + '$';
+
+    try {
+      const globRe = new RegExp(regexStr, 'i');
+      if (globRe.test(testUrl)) return true;
+      if (urlObj && globRe.test(urlObj.hostname)) return true;
+      if (urlObj && globRe.test(urlObj.origin + urlObj.pathname)) return true;
+    } catch (e) {
+      console.warn('Invalid glob pattern:', pat, e);
+    }
+  }
+
+  return false;
+}
+
+// Storage Helpers
+function loadAllData(callback) {
   if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
-    chrome.storage.local.get({ custom_tools: [], pinned_tools: [] }, (result) => {
+    chrome.storage.local.get({
+      custom_tools: [],
+      pinned_tools: [],
+      auto_rules: null,
+      auto_rules_enabled: true
+    }, (result) => {
       customTools = result.custom_tools || [];
       pinnedToolIds = result.pinned_tools || [];
+      autoEngineEnabled = result.auto_rules_enabled !== false;
+      
+      if (!result.auto_rules) {
+        // Seed helpful default rule (PopKiller on media/ads)
+        autoRules = [
+          {
+            id: 'rule_default_popkiller',
+            name: 'Redirect & Popunder Blocker',
+            pattern: '*stream* , *movies* , *download* , *torrent* , *anime*',
+            toolId: 'redirect-popunder-blocker',
+            toolName: 'Redirect & Popunder Blocker',
+            timing: 'complete',
+            enabled: true,
+            executionCount: 0,
+            lastExecutedAt: null,
+            createdAt: Date.now()
+          }
+        ];
+        saveAutoRules();
+      } else {
+        autoRules = result.auto_rules || [];
+      }
+
+      // Sync built-in tools map to storage for background worker
+      syncBuiltInToolsToStorage();
+
       if (callback) callback();
     });
   } else {
     try {
-      const stored = localStorage.getItem('custom_tools');
-      customTools = stored ? JSON.parse(stored) : [];
+      const storedCustom = localStorage.getItem('custom_tools');
+      customTools = storedCustom ? JSON.parse(storedCustom) : [];
       const storedPins = localStorage.getItem('pinned_tools');
       pinnedToolIds = storedPins ? JSON.parse(storedPins) : [];
+      const storedRules = localStorage.getItem('auto_rules');
+      if (storedRules) {
+        autoRules = JSON.parse(storedRules);
+      } else {
+        autoRules = [
+          {
+            id: 'rule_default_popkiller',
+            name: 'Redirect & Popunder Blocker',
+            pattern: '*stream* , *movies* , *download* , *torrent* , *anime*',
+            toolId: 'redirect-popunder-blocker',
+            toolName: 'Redirect & Popunder Blocker',
+            timing: 'complete',
+            enabled: true,
+            executionCount: 0,
+            lastExecutedAt: null,
+            createdAt: Date.now()
+          }
+        ];
+      }
+      const storedEngine = localStorage.getItem('auto_rules_enabled');
+      autoEngineEnabled = storedEngine !== null ? JSON.parse(storedEngine) : true;
     } catch (e) {
-      console.error('Failed to load custom tools or pins from localStorage:', e);
+      console.error('Failed to load storage:', e);
       customTools = [];
       pinnedToolIds = [];
+      autoRules = [];
+      autoEngineEnabled = true;
     }
     if (callback) callback();
+  }
+}
+
+function syncBuiltInToolsToStorage() {
+  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+    const map = {};
+    TOOLS.forEach(t => {
+      map[t.id] = { id: t.id, name: t.name, code: t.code, category: t.category };
+    });
+    chrome.storage.local.set({ built_in_tools_map: map });
   }
 }
 
@@ -891,7 +1054,7 @@ function saveCustomTools(callback) {
     try {
       localStorage.setItem('custom_tools', JSON.stringify(customTools));
     } catch (e) {
-      console.error('Failed to save custom tools to localStorage:', e);
+      console.error('Failed to save custom tools:', e);
     }
     if (callback) callback();
   }
@@ -906,10 +1069,48 @@ function savePinnedTools(callback) {
     try {
       localStorage.setItem('pinned_tools', JSON.stringify(pinnedToolIds));
     } catch (e) {
-      console.error('Failed to save pinned tools to localStorage:', e);
+      console.error('Failed to save pinned tools:', e);
     }
     if (callback) callback();
   }
+}
+
+function saveAutoRules(callback) {
+  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+    chrome.storage.local.set({ auto_rules: autoRules }, () => {
+      updateRulesBadgeCount();
+      if (callback) callback();
+    });
+  } else {
+    try {
+      localStorage.setItem('auto_rules', JSON.stringify(autoRules));
+    } catch (e) {
+      console.error('Failed to save auto rules:', e);
+    }
+    updateRulesBadgeCount();
+    if (callback) callback();
+  }
+}
+
+function saveAutoEngineEnabled(callback) {
+  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+    chrome.storage.local.set({ auto_rules_enabled: autoEngineEnabled }, () => {
+      if (callback) callback();
+    });
+  } else {
+    try {
+      localStorage.setItem('auto_rules_enabled', JSON.stringify(autoEngineEnabled));
+    } catch (e) {
+      console.error('Failed to save engine status:', e);
+    }
+    if (callback) callback();
+  }
+}
+
+function updateRulesBadgeCount() {
+  const activeCount = autoRules.filter(r => r.enabled).length;
+  if (autoRulesCountBadge) autoRulesCountBadge.textContent = activeCount;
+  if (tabRulesCount) tabRulesCount.textContent = activeCount;
 }
 
 function sanitizeCategory(name) {
@@ -917,7 +1118,69 @@ function sanitizeCategory(name) {
   return name.trim().toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
 }
 
-// Update the Category Dropdown options dynamically
+// Detect Active Tab and Display Hostname
+function detectActiveTab(callback) {
+  if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs && tabs[0]) {
+        activeTabInfo.url = tabs[0].url || '';
+        activeTabInfo.id = tabs[0].id || null;
+        try {
+          if (activeTabInfo.url) {
+            const parsed = new URL(activeTabInfo.url);
+            activeTabInfo.hostname = parsed.hostname || activeTabInfo.url;
+          }
+        } catch (e) {
+          activeTabInfo.hostname = activeTabInfo.url.split('/')[2] || 'webpage';
+        }
+      }
+      updateActiveTabDisplay();
+      if (callback) callback();
+    });
+  } else {
+    activeTabInfo.url = window.location.href;
+    activeTabInfo.hostname = window.location.hostname || 'localhost';
+    updateActiveTabDisplay();
+    if (callback) callback();
+  }
+}
+
+function updateActiveTabDisplay() {
+  if (!activeTabDomainName) return;
+  const host = activeTabInfo.hostname || 'Current Website';
+  const matchingRules = autoRules.filter(r => r.enabled && matchUrlPattern(r.pattern, activeTabInfo.url || host));
+  
+  if (matchingRules.length > 0) {
+    activeTabDomainName.innerHTML = `${host} <span style="color:#10b981; font-weight:normal; font-size:10px;">(${matchingRules.length} rule${matchingRules.length > 1 ? 's' : ''} active)</span>`;
+  } else {
+    activeTabDomainName.textContent = host;
+  }
+}
+
+// View Switcher (Main Tools vs Auto-Rules)
+function switchView(viewName) {
+  currentActiveView = viewName;
+  if (viewName === 'auto_rules') {
+    if (mainToolsView) mainToolsView.classList.add('hidden');
+    if (autoRulesView) autoRulesView.classList.remove('hidden');
+    if (customSnippetPanel) customSnippetPanel.classList.add('hidden');
+    
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    const autoTab = document.getElementById('tab-auto-rules-nav');
+    if (autoTab) autoTab.classList.add('active');
+    
+    renderAutoRulesList();
+    updateActiveTabDisplay();
+    logMessage('Switched to Auto-Injector Rules Manager');
+  } else {
+    if (autoRulesView) autoRulesView.classList.add('hidden');
+    if (mainToolsView) mainToolsView.classList.remove('hidden');
+    if (autoRuleEditorPanel) autoRuleEditorPanel.classList.add('hidden');
+    renderTools();
+  }
+}
+
+// Update Category Dropdown for Custom Snippets
 function updateCategoryDropdown() {
   if (!customCategorySelect) return;
   
@@ -962,13 +1225,57 @@ function updateCategoryDropdown() {
   customCategorySelect.appendChild(newOpt);
 }
 
-// Render tabs dynamically
+// Populate Auto-Rule Bookmarklet Select Dropdown
+function populateRuleToolSelect(selectedToolId = null) {
+  if (!ruleToolSelect) return;
+  ruleToolSelect.innerHTML = '';
+
+  const allTools = [...TOOLS, ...customTools];
+  
+  // Group tools by category
+  const groups = {};
+  allTools.forEach(tool => {
+    const cat = tool.category || 'other';
+    if (!groups[cat]) groups[cat] = [];
+    groups[cat].push(tool);
+  });
+
+  const catNames = {
+    design_layout: '📐 Layout & Grid',
+    typography_colors: '🎨 Typography & Colors',
+    responsive_testing: '📱 Responsive Testing',
+    development_utilities: '🛠️ Dev Utilities',
+    performance_seo: '🚀 SEO & Performance',
+    advanced_tools: '🔬 Diagnostics',
+    penetration_testing: '🛡️ Security & PopKiller',
+    web_development: '💻 Web Development',
+    content_writing: '✍️ Content & Writing'
+  };
+
+  Object.entries(groups).forEach(([catKey, toolsList]) => {
+    const optgroup = document.createElement('optgroup');
+    optgroup.label = catNames[catKey] || catKey.replace(/_/g, ' ').toUpperCase();
+    toolsList.forEach(tool => {
+      const opt = document.createElement('option');
+      opt.value = tool.id;
+      opt.textContent = tool.name + (tool.isCustom ? ' (Custom)' : '');
+      if (selectedToolId && tool.id === selectedToolId) {
+        opt.selected = true;
+      }
+      optgroup.appendChild(opt);
+    });
+    ruleToolSelect.appendChild(optgroup);
+  });
+}
+
+// Render Tabs
 function renderTabs() {
   if (!tabsContainer) return;
   tabsContainer.innerHTML = '';
 
   const defaultTabs = [
     { id: 'all', name: 'All' },
+    { id: 'view_auto_rules', name: '⚡ Auto-Rules', isSpecial: true },
     { id: 'design_layout', name: 'Layout' },
     { id: 'typography_colors', name: 'Colors' },
     { id: 'responsive_testing', name: 'Responsive' },
@@ -996,22 +1303,36 @@ function renderTabs() {
 
   allTabs.forEach(t => {
     const btn = document.createElement('button');
-    btn.className = `tab ${selectedCategory === t.id ? 'active' : ''}`;
+    btn.className = `tab ${t.isSpecial ? 'tab-auto-rules' : ''} ${(currentActiveView === 'main' && selectedCategory === t.id) || (currentActiveView === 'auto_rules' && t.id === 'view_auto_rules') ? 'active' : ''}`;
     btn.setAttribute('data-category', t.id);
-    btn.textContent = t.name;
-    btn.addEventListener('click', (e) => {
+    if (t.isSpecial) btn.id = 'tab-auto-rules-nav';
+
+    if (t.isSpecial) {
+      const activeCount = autoRules.filter(r => r.enabled).length;
+      btn.innerHTML = `⚡ Auto-Rules <span id="tab-rules-count" class="badge-count">${activeCount}</span>`;
+    } else {
+      btn.textContent = t.name;
+    }
+
+    btn.addEventListener('click', () => {
       document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      selectedCategory = t.id;
-      logMessage(`Switched filter category: ${t.name.toUpperCase()}`);
-      renderTools();
+
+      if (t.id === 'view_auto_rules') {
+        switchView('auto_rules');
+      } else {
+        selectedCategory = t.id;
+        switchView('main');
+        logMessage(`Switched category: ${t.name.toUpperCase()}`);
+      }
     });
     tabsContainer.appendChild(btn);
   });
 }
 
-// Render dynamic list
+// Render Main Bookmarklet Tools List
 function renderTools() {
+  if (!scriptsList) return;
   scriptsList.innerHTML = '';
   
   const combinedTools = [...TOOLS, ...customTools];
@@ -1023,7 +1344,6 @@ function renderTools() {
     return matchesSearch && matchesCat;
   });
 
-  // Sort: Pinned first, then maintain relative order
   filtered.sort((a, b) => {
     const aPinned = pinnedToolIds.includes(a.id);
     const bPinned = pinnedToolIds.includes(b.id);
@@ -1048,7 +1368,6 @@ function renderTools() {
       card.style.border = '1px solid rgba(245, 158, 11, 0.4)';
     }
     
-    // category mapping
     let catClass = 'layout';
     if (tool.category === 'typography_colors') catClass = 'design';
     else if (tool.category === 'responsive_testing') catClass = 'responsive';
@@ -1060,7 +1379,7 @@ function renderTools() {
     else if (tool.category === 'content_writing') catClass = 'content';
     else catClass = 'custom';
 
-    const prettyCat = tool.category.replace(/_/g, ' ').toUpperCase();
+    const prettyCat = (tool.category || 'other').replace(/_/g, ' ').toUpperCase();
     const customMark = tool.isCustom ? '<span class="custom-badge">★ Custom</span>' : '';
     const isPinned = pinnedToolIds.includes(tool.id);
 
@@ -1082,7 +1401,10 @@ function renderTools() {
         <button class="btn btn-secondary copy-btn" data-id="${tool.id}">
           Copy Snippet
         </button>
-        ${tool.isCustom ? `<button class="btn btn-secondary delete-btn" data-id="${tool.id}" style="max-width:32px; background:rgba(239, 72, 153, 0.1); color:#f472b6; border-color:rgba(239, 72, 153, 0.2); cursor:pointer">✕</button>` : ''}
+        <button class="btn btn-auto-rule create-auto-rule-btn" data-id="${tool.id}" title="Auto-run on specific websites">
+          ⚡ Auto-Rule
+        </button>
+        ${tool.isCustom ? `<button class="btn btn-danger delete-btn" data-id="${tool.id}" style="flex:0 0 auto; padding:6px 8px;" title="Delete custom tool">✕</button>` : ''}
       </div>
     `;
     scriptsList.appendChild(card);
@@ -1097,6 +1419,16 @@ function renderTools() {
     });
   });
 
+  document.querySelectorAll('.create-auto-rule-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const toolId = e.currentTarget.getAttribute('data-id');
+      const tool = [...TOOLS, ...customTools].find(t => t.id === toolId);
+      if (tool) {
+        openAutoRuleEditorForTool(tool);
+      }
+    });
+  });
+
   document.querySelectorAll('.pin-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -1104,10 +1436,10 @@ function renderTools() {
       const idx = pinnedToolIds.indexOf(toolId);
       if (idx > -1) {
         pinnedToolIds.splice(idx, 1);
-        logMessage(`Unpinned script`);
+        logMessage('Unpinned script');
       } else {
         pinnedToolIds.push(toolId);
-        logMessage(`Pinned script to top!`);
+        logMessage('Pinned script to top!');
       }
       savePinnedTools(() => {
         renderTools();
@@ -1121,9 +1453,8 @@ function renderTools() {
       const tool = [...TOOLS, ...customTools].find(t => t.id === toolId);
       if (tool) {
         navigator.clipboard.writeText(tool.code);
-        logMessage(`Copied ${tool.name} script to clipboard!`);
+        logMessage(`Copied ${tool.name} snippet to clipboard!`);
         
-        // Quick visual toggle
         const prevText = e.currentTarget.innerText;
         e.currentTarget.innerText = 'Copied!';
         setTimeout(() => {
@@ -1148,61 +1479,256 @@ function renderTools() {
   });
 }
 
-// Script Ingestion Logic for Manifest V3 extension
+// Render Auto-Rules List
+function renderAutoRulesList() {
+  if (!autoRulesList) return;
+  autoRulesList.innerHTML = '';
+
+  // Update Engine Master Toggle State
+  if (autoEngineToggle) {
+    autoEngineToggle.checked = autoEngineEnabled;
+  }
+  if (engineStatusTag) {
+    if (autoEngineEnabled) {
+      engineStatusTag.textContent = 'ACTIVE';
+      engineStatusTag.style.background = 'rgba(16, 185, 129, 0.2)';
+      engineStatusTag.style.color = '#34d399';
+    } else {
+      engineStatusTag.textContent = 'DISABLED';
+      engineStatusTag.style.background = 'rgba(239, 68, 68, 0.2)';
+      engineStatusTag.style.color = '#f87171';
+    }
+  }
+
+  updateRulesBadgeCount();
+
+  if (autoRules.length === 0) {
+    autoRulesList.innerHTML = `
+      <div style="padding: 24px 12px; text-align: center; color: var(--text-muted); background: var(--bg-card); border: 1px dashed var(--border-color); border-radius: 8px;">
+        <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 4px;">No Auto-Injection Rules Configured</p>
+        <p style="font-size: 11px;">Create a rule to auto-inject bookmarklets when you visit specific websites!</p>
+        <button class="btn btn-primary" id="empty-state-add-rule-btn" style="margin-top: 10px; width: auto; display: inline-flex; padding: 6px 14px;">
+          + Create First Auto-Rule
+        </button>
+      </div>
+    `;
+
+    const emptyBtn = document.getElementById('empty-state-add-rule-btn');
+    if (emptyBtn) {
+      emptyBtn.addEventListener('click', () => openAutoRuleEditor());
+    }
+    return;
+  }
+
+  const allTools = [...TOOLS, ...customTools];
+
+  autoRules.forEach(rule => {
+    const matchedTool = allTools.find(t => t.id === rule.toolId);
+    const toolDisplayName = matchedTool ? matchedTool.name : (rule.toolName || rule.toolId);
+    const isCurrentHostMatch = matchUrlPattern(rule.pattern, activeTabInfo.url || activeTabInfo.hostname);
+
+    const card = document.createElement('div');
+    card.className = `rule-card ${rule.enabled ? '' : 'disabled'}`;
+    if (isCurrentHostMatch && rule.enabled) {
+      card.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+    }
+
+    card.innerHTML = `
+      <div class="rule-header">
+        <div class="rule-title">
+          <span>⚡ ${rule.name}</span>
+          ${isCurrentHostMatch && rule.enabled ? '<span style="font-size:9px; font-weight:700; color:#10b981; background:rgba(16,185,129,0.15); padding:1px 5px; border-radius:3px;">● MATCHES CURRENT TAB</span>' : ''}
+        </div>
+        <label class="switch" title="${rule.enabled ? 'Disable rule' : 'Enable rule'}">
+          <input type="checkbox" class="rule-toggle-switch" data-id="${rule.id}" ${rule.enabled ? 'checked' : ''}>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:var(--text-muted);">
+        <span>Script:</span>
+        <strong style="color:var(--accent-primary);">${toolDisplayName}</strong>
+      </div>
+      <div style="margin-top:2px;">
+        <span class="rule-pattern-tag" title="Target URL Pattern">${rule.pattern}</span>
+      </div>
+      <div class="rule-meta">
+        <span>Hits: <strong>${rule.executionCount || 0}</strong> auto-injections</span>
+        <span>Timing: ${rule.timing === 'interactive' ? 'DOM Ready' : 'On Load'}</span>
+      </div>
+      <div class="rule-actions">
+        <button class="btn btn-secondary test-rule-btn" data-id="${rule.id}" title="Run this rule right now on the active tab">
+          ⚡ Test Run
+        </button>
+        <button class="btn btn-secondary edit-rule-btn" data-id="${rule.id}">
+          ✏️ Edit
+        </button>
+        <button class="btn btn-danger delete-rule-btn" data-id="${rule.id}" style="flex:0 0 auto; padding:6px 8px;">
+          🗑️
+        </button>
+      </div>
+    `;
+    autoRulesList.appendChild(card);
+  });
+
+  // Attach Rule Card Event Listeners
+  document.querySelectorAll('.rule-toggle-switch').forEach(sw => {
+    sw.addEventListener('change', (e) => {
+      const ruleId = e.currentTarget.getAttribute('data-id');
+      const rule = autoRules.find(r => r.id === ruleId);
+      if (rule) {
+        rule.enabled = e.currentTarget.checked;
+        saveAutoRules(() => {
+          logMessage(`Rule "${rule.name}" ${rule.enabled ? 'enabled' : 'disabled'}`, true);
+          renderAutoRulesList();
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll('.test-rule-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const ruleId = e.currentTarget.getAttribute('data-id');
+      const rule = autoRules.find(r => r.id === ruleId);
+      if (rule) {
+        testExecuteRule(rule);
+      }
+    });
+  });
+
+  document.querySelectorAll('.edit-rule-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const ruleId = e.currentTarget.getAttribute('data-id');
+      const rule = autoRules.find(r => r.id === ruleId);
+      if (rule) {
+        openAutoRuleEditor(rule);
+      }
+    });
+  });
+
+  document.querySelectorAll('.delete-rule-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const ruleId = e.currentTarget.getAttribute('data-id');
+      const rule = autoRules.find(r => r.id === ruleId);
+      if (rule && window.confirm(`Are you sure you want to delete auto-rule "${rule.name}"?`)) {
+        autoRules = autoRules.filter(r => r.id !== ruleId);
+        saveAutoRules(() => {
+          logMessage(`Deleted auto-rule "${rule.name}"`, true);
+          renderAutoRulesList();
+        });
+      }
+    });
+  });
+}
+
+// Open Auto-Rule Editor
+function openAutoRuleEditor(existingRule = null) {
+  if (!autoRuleEditorPanel) return;
+  autoRuleEditorPanel.classList.remove('hidden');
+
+  populateRuleToolSelect(existingRule ? existingRule.toolId : null);
+
+  if (existingRule) {
+    ruleEditorTitle.textContent = '✏️ Edit Auto-Injection Rule';
+    editRuleIdInput.value = existingRule.id;
+    ruleNameInput.value = existingRule.name || '';
+    ruleUrlPatternInput.value = existingRule.pattern || '';
+    ruleTimingSelect.value = existingRule.timing || 'complete';
+  } else {
+    ruleEditorTitle.textContent = '⚡ Create Auto-Injection Rule';
+    editRuleIdInput.value = '';
+    ruleNameInput.value = '';
+    const host = activeTabInfo.hostname || '';
+    ruleUrlPatternInput.value = host && host !== 'localhost' ? `*${host}*` : '';
+    ruleTimingSelect.value = 'complete';
+  }
+
+  ruleNameInput.focus();
+  autoRuleEditorPanel.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Open Auto-Rule Editor for a specific Tool directly from main list
+function openAutoRuleEditorForTool(tool) {
+  switchView('auto_rules');
+  populateRuleToolSelect(tool.id);
+  
+  if (autoRuleEditorPanel) {
+    autoRuleEditorPanel.classList.remove('hidden');
+    ruleEditorTitle.textContent = `⚡ Create Auto-Rule for ${tool.name}`;
+    editRuleIdInput.value = '';
+    ruleNameInput.value = `Auto-${tool.name}`;
+    const host = activeTabInfo.hostname || '';
+    ruleUrlPatternInput.value = host && host !== 'localhost' ? `*${host}*` : '*';
+    ruleTimingSelect.value = 'complete';
+    ruleNameInput.focus();
+    autoRuleEditorPanel.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Test Execute Auto-Rule
+function testExecuteRule(rule) {
+  const allTools = [...TOOLS, ...customTools];
+  const tool = allTools.find(t => t.id === rule.toolId);
+  if (!tool) {
+    alert(`Script for rule "${rule.name}" not found!`);
+    return;
+  }
+  logMessage(`Testing rule "${rule.name}" on active tab...`, true);
+  injectCode(tool);
+  rule.executionCount = (rule.executionCount || 0) + 1;
+  rule.lastExecutedAt = new Date().toISOString();
+  saveAutoRules(() => {
+    renderAutoRulesList();
+  });
+}
+
+// Manual Injection Logic
 function injectCode(tool) {
   logMessage(`Attempting injection: "${tool.name}"...`);
 
-  // Query browser tab
   if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (chrome.runtime.lastError || !tabs || tabs.length === 0) {
-        logMessage(`Error: Open a webpage to run injection script.`);
+        logMessage('Error: Open a webpage to run injection script.');
         console.error(chrome.runtime.lastError);
         return;
       }
 
       const activeTab = tabs[0];
       
-      // Check for restricted chrome:// or edge:// pages
       if (activeTab.url && (activeTab.url.startsWith('chrome://') || activeTab.url.startsWith('edge://') || activeTab.url.startsWith('about:') || activeTab.url.startsWith('chrome-extension://'))) {
-        const errorMsg = `Browser security limits prevent extension script execution on internal system pages (${activeTab.url.split('/')[2] || 'system'}). Please open a regular web page to use this tool.`;
+        const errorMsg = `Browser security policies prevent script injection on internal browser pages. Please navigate to a standard web page.`;
         logMessage(`Error: ${errorMsg}`);
         alert(errorMsg);
         return;
       }
       
-      // Check for Chrome Web Store
       if (activeTab.url && (activeTab.url.includes('chrome.google.com/webstore') || activeTab.url.includes('chromewebstore.google.com') || activeTab.url.includes('microsoftedge.microsoft.com/addons'))) {
-        const webStoreMsg = `Browser security policies strictly block extensions from running script injection on official Extension Web Stores for account and system safety. Please open any other website to inject this tool.`;
+        const webStoreMsg = `Browser security policies prevent script injection on the official Web Store. Please open any other website.`;
         logMessage(`Error: ${webStoreMsg}`);
         alert(webStoreMsg);
         return;
       }
       
       if (!activeTab.id) {
-        logMessage(`Error: Active tab ID not available.`);
+        logMessage('Error: Active tab ID not available.');
         return;
       }
       
-      // Inject the script programmatically
       chrome.scripting.executeScript({
         target: { tabId: activeTab.id },
         world: 'MAIN',
         func: (jsCode, toolName) => {
           try {
-            // Step 1: Parse and compile the javascript function
             const fn = new Function(jsCode);
-            
-            // Step 2: Execute the compiled function and catch runtime errors
             try {
               fn();
             } catch (runErr) {
               console.error(`QuickScripts Tool [${toolName}] Runtime Error:`, runErr);
-              alert(`Runtime Error inside "${toolName}":\\n\\n${runErr.name}: ${runErr.message}\\n\\nPlease check the browser's DevTools Console (F12) for the complete execution stack trace.`);
+              alert(`Runtime Error in "${toolName}":\\n\\n${runErr.name}: ${runErr.message}`);
             }
           } catch (syntaxErr) {
-            console.error(`QuickScripts Tool [${toolName}] Syntax Compile Error:`, syntaxErr);
-            alert(`Syntax Error in "${toolName}"!\\n\\nCould not compile or parse the JavaScript code.\\n\\nError details: ${syntaxErr.message}\\n\\nPlease edit your script to fix syntax formatting issues.`);
+            console.error(`QuickScripts Tool [${toolName}] Syntax Error:`, syntaxErr);
+            alert(`Syntax Error in "${toolName}":\\n\\n${syntaxErr.message}`);
           }
         },
         args: [tool.code, tool.name]
@@ -1211,15 +1737,14 @@ function injectCode(tool) {
           const chromeErr = chrome.runtime.lastError.message || '';
           logMessage(`Failed: ${chromeErr}`);
           console.error(chrome.runtime.lastError);
-          
-          alert(`Could not inject "${tool.name}" on this page!\\n\\nReason: ${chromeErr}\\n\\nTips:\\n- Ensure the page has fully finished loading.\\n- If this is a local local file (file:// URL), please enable "Allow access to file URLs" in the extension settings page.`);
+          alert(`Could not inject "${tool.name}"!\\n\\nReason: ${chromeErr}`);
         } else {
-          logMessage(`Success! Executed "${tool.name}" successfully.`);
+          logMessage(`Success! Injected "${tool.name}"`);
         }
       });
     });
   } else {
-    // Standard web sandbox simulation fallback
+    // Standard web simulator fallback
     try {
       const fn = new Function(tool.code);
       try {
@@ -1233,9 +1758,120 @@ function injectCode(tool) {
     } catch (syntaxErr) {
       logMessage(`Simulator Syntax Error: ${syntaxErr.message}`);
       console.error(syntaxErr);
-      alert(`Simulator Syntax Error in "${tool.name}":\\n\\n${syntaxErr.message}\\n\\nPlease correct the JavaScript syntax format.`);
+      alert(`Simulator Syntax Error in "${tool.name}":\\n\\n${syntaxErr.message}`);
     }
   }
+}
+
+// Master Engine Toggle Handler
+if (autoEngineToggle) {
+  autoEngineToggle.addEventListener('change', (e) => {
+    autoEngineEnabled = e.target.checked;
+    saveAutoEngineEnabled(() => {
+      logMessage(`Auto-Injector Engine is now ${autoEngineEnabled ? 'ACTIVE ✅' : 'DISABLED ⏸️'}`, true);
+      renderAutoRulesList();
+    });
+  });
+}
+
+// Quick Add Rule Button Handler
+if (quickAddRuleBtn) {
+  quickAddRuleBtn.addEventListener('click', () => {
+    openAutoRuleEditor();
+  });
+}
+
+// Header Toggle Rules View Button
+if (toggleRulesViewBtn) {
+  toggleRulesViewBtn.addEventListener('click', () => {
+    if (currentActiveView === 'auto_rules') {
+      switchView('main');
+    } else {
+      switchView('auto_rules');
+    }
+  });
+}
+
+// Preset Chip Clicks in Auto-Rule Editor
+document.querySelectorAll('.preset-chips .chip').forEach(chip => {
+  chip.addEventListener('click', (e) => {
+    const pattern = e.currentTarget.getAttribute('data-pattern');
+    if (pattern) {
+      ruleUrlPatternInput.value = pattern;
+    } else if (e.currentTarget.id === 'chip-current-domain') {
+      const host = activeTabInfo.hostname || '';
+      ruleUrlPatternInput.value = host && host !== 'localhost' ? `*${host}*` : '*';
+    }
+  });
+});
+
+// Save Auto-Rule Handler
+if (saveRuleBtn) {
+  saveRuleBtn.addEventListener('click', () => {
+    const ruleId = editRuleIdInput.value.trim();
+    const name = ruleNameInput.value.trim();
+    const toolId = ruleToolSelect.value;
+    const pattern = ruleUrlPatternInput.value.trim();
+    const timing = ruleTimingSelect.value;
+
+    if (!name) {
+      alert('Please enter a name for this auto-rule.');
+      ruleNameInput.focus();
+      return;
+    }
+
+    if (!pattern) {
+      alert('Please enter a URL match pattern (e.g. *example.com* or *).');
+      ruleUrlPatternInput.focus();
+      return;
+    }
+
+    const allTools = [...TOOLS, ...customTools];
+    const matchedTool = allTools.find(t => t.id === toolId);
+    const toolName = matchedTool ? matchedTool.name : toolId;
+
+    if (ruleId) {
+      // Edit existing rule
+      const rule = autoRules.find(r => r.id === ruleId);
+      if (rule) {
+        rule.name = name;
+        rule.toolId = toolId;
+        rule.toolName = toolName;
+        rule.pattern = pattern;
+        rule.timing = timing;
+      }
+      logMessage(`Updated auto-rule "${name}"`, true);
+    } else {
+      // New rule
+      const newRule = {
+        id: 'rule_' + Date.now(),
+        name: name,
+        toolId: toolId,
+        toolName: toolName,
+        pattern: pattern,
+        timing: timing,
+        enabled: true,
+        executionCount: 0,
+        lastExecutedAt: null,
+        createdAt: Date.now()
+      };
+      autoRules.push(newRule);
+      logMessage(`Created new auto-rule "${name}" for pattern "${pattern}"`, true);
+    }
+
+    saveAutoRules(() => {
+      autoRuleEditorPanel.classList.add('hidden');
+      renderAutoRulesList();
+      renderTabs();
+    });
+  });
+}
+
+// Cancel Auto-Rule Handler
+if (cancelRuleBtn) {
+  cancelRuleBtn.addEventListener('click', () => {
+    autoRuleEditorPanel.classList.add('hidden');
+  });
 }
 
 // Form Category Dropdown change handler
@@ -1265,6 +1901,9 @@ if (cancelCustomBtn) {
 // Header Add button toggle handler
 if (toggleAddPanelBtn) {
   toggleAddPanelBtn.addEventListener('click', () => {
+    if (currentActiveView !== 'main') {
+      switchView('main');
+    }
     customSnippetPanel.classList.toggle('hidden');
     if (!customSnippetPanel.classList.contains('hidden')) {
       customNameInput.focus();
@@ -1300,19 +1939,15 @@ if (saveCustomBtn) {
       finalCat = sanitizeCategory(newCatVal);
     }
     
-    // Ensure bookmarklet is formatted correctly (convert raw javascript if needed or keep)
     let formattedCode = rawCode;
     if (!rawCode.toLowerCase().startsWith('javascript:')) {
-      // Just wrap it if it looks like pure javascript code
       if (!rawCode.startsWith('(function')) {
         formattedCode = `(function(){\\n${rawCode}\\n})();`;
       }
     } else {
-      // It's a javascript: link, extract code
       formattedCode = decodeURIComponent(rawCode.slice(11));
     }
 
-    // Syntax validation check
     try {
       new Function(formattedCode);
     } catch (syntaxErr) {
@@ -1337,7 +1972,6 @@ if (saveCustomBtn) {
     saveCustomTools(() => {
       logMessage(`Saved custom snippet "${name}"!`);
       
-      // Clear inputs
       customNameInput.value = '';
       customDescInput.value = '';
       customCodeInput.value = '';
@@ -1346,8 +1980,8 @@ if (saveCustomBtn) {
       newCategoryGroup.classList.add('hidden');
       customSnippetPanel.classList.add('hidden');
       
-      // Re-initialize
       updateCategoryDropdown();
+      populateRuleToolSelect();
       renderTabs();
       renderTools();
     });
@@ -1358,14 +1992,35 @@ if (saveCustomBtn) {
 if (searchBar) {
   searchBar.addEventListener('input', (e) => {
     query = e.target.value;
+    if (currentActiveView !== 'main' && query.length > 0) {
+      switchView('main');
+    }
     renderTools();
   });
 }
 
-// Initial boot
-loadCustomTools(() => {
-  updateCategoryDropdown();
-  renderTabs();
-  renderTools();
-  logMessage('Interactive scripts list generated.');
+// Listen to Background Auto-Injection Broadcast Messages
+if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.onMessage) {
+  chrome.runtime.onMessage.addListener((message) => {
+    if (message.type === 'AUTO_INJECTED') {
+      logMessage(`⚡ [Auto-Injected] "${message.rule.name}" into ${message.url}`, true);
+      loadAllData(() => {
+        if (currentActiveView === 'auto_rules') {
+          renderAutoRulesList();
+        }
+      });
+    }
+  });
+}
+
+// Initial Boot
+loadAllData(() => {
+  detectActiveTab(() => {
+    updateCategoryDropdown();
+    populateRuleToolSelect();
+    renderTabs();
+    renderTools();
+    updateRulesBadgeCount();
+    logMessage('Workspace & Auto-Injector Engine ready.');
+  });
 });
