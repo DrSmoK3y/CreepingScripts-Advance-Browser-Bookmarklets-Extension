@@ -1,73 +1,51 @@
-# 🕷️ CreepingScripts - Chrome Extension Bookmarklet Toolkit
+# CreepingScripts — Web Developer Bookmarklet Toolkit & Auto-Injector (v1.2.0)
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Platform](https://img.shields.io/badge/Platform-Chrome%20%7C%20Edge%20%7C%20Brave-orange.svg)](#)
-[![Manifest Version](https://img.shields.io/badge/Manifest-V3-brightgreen.svg)](#)
-
-**CreepingScripts** is an elegant, lightweight Chrome Manifest V3 Extension designed for web developers, QA auditors, UI designers, and power users. It packages 15+ high-performance web auditing bookmarklets into a clean browser Action Popup, allowing you to instantly debug layouts, inspect styling, test responsiveness, and execute custom scripts on any webpage with a single click.
+A powerful, high-performance Chrome / Edge / Brave Manifest V3 Extension bundling **121+ curated JavaScript bookmarklets** with an automated **URL Rule Engine** that automatically executes chosen bookmarklets whenever matching websites are loaded.
 
 ---
 
-## 🚀 Key Features
+## ⚡ Key Features
 
-*   **⚡ Integrated Bookmarklet Toolkit**: Instantly execute 15+ pre-loaded tools categorised for modern workflows:
-    *   **Design & Layout**: Grid overlays, element outline debuggers, live CSS injection, and visual element zapping.
-    *   **Typography & Styling**: Font inspectors, custom stylesheet audits, and dead image reference checkers.
-    *   **Responsive & Viewport Testing**: Custom iframe sandboxes, QR code generation, and mobile viewport simulations.
-    *   **Development Utilities**: In-place typography design mode (making any webpage text editable), element selectors, and word counters.
-    *   **Performance & SEO**: Quick validation via W3C validator links, PageSpeed insights shortcuts, and ARIA role accessibility checkers.
-*   **📂 Custom Script Manager**: Add, edit, and organize your own custom JavaScript snippets and bookmarklets directly inside the extension popup. Save them into personalized categories on the fly.
-*   **🛡️ Robust Error Defense System**:
-    *   **Real-time Syntax Checker**: Validates your custom JavaScript code before saving and warns you of any syntax errors.
-    *   **Execution Isolation**: Safely wraps and evaluates code to ensure external errors do not crash your active tabs.
-    *   **Protected Pages Protection**: Gracefully alerts you when running on pages restricted by browser security policies (e.g., Chrome Web Store, internal settings pages).
+1. **⚡ Automated URL Script Injector (Auto-Rules Engine)**:
+   - Define URL wildcard patterns (e.g. `*stream* , *movies*`, `*github.com*`, `*localhost:*`, `https://example.com/*`).
+   - Automatically executes scripts on page load (`complete`) or DOM ready (`interactive`).
+   - Dedicated Background Service Worker (`background.js`) manages execution, debouncing, and tab badges.
+   - Master on/off toggle and individual rule activation switches.
+   - Live hit counter telemetry tracking each injection.
 
----
+2. **121+ Curated Developer Bookmarklets**:
+   - **Layout & Grids**: Pesticide, 80px/100px Grid overlays, Wireframe views, Element rulers.
+   - **Typography & Colors**: Font stacks inspector, Grayscale contrast audits, Invert colors, Dark mode.
+   - **Responsive Testing**: Viewport resizing, Media query diagnostics, Touch target indicators.
+   - **Dev & QA Utilities**: Form auto-fillers, Editable page toggles, Cookie editors, Image downloaders.
+   - **Security & PopKiller**: Redirect & Popunder blockers, JS endpoint extractors, Mixed content checkers.
+   - **SEO & Performance**: Core Web Vitals monitors, Meta tag inspectors, Heading hierarchy analyzers.
 
-## 📂 Extension Files
-
-This repository contains the lightweight, self-contained extension codebase:
-
-```text
-CreepingScripts/
-├── manifest.json         # Extension configuration, permissions, and icons
-├── popup.html            # The main UI popup interface
-├── popup.js              # State engine, local storage management, and script executor
-├── README.md             # Guide and overview
-├── icon16.png            # Extension Action Icon (16x16)
-├── icon32.png            # Extension Action Icon (32x32)
-├── icon48.png            # Extension Action Icon (48x48)
-├── icon64.png            # Extension Action Icon (64x64)
-└── icon128.png           # Extension Action Icon (128x128)
-```
+3. **Custom Bookmarklet Snippet Manager**:
+   - Write or paste custom JavaScript bookmarklets with category assignments.
+   - Persistent storage synced across browser sessions via `chrome.storage.local`.
 
 ---
 
-## 💾 Installation Guide (Chrome / Edge / Brave / Opera)
+## 🚀 How to Install in Chrome, Brave, Edge, Opera
 
-Since this is a developer utility, you can easily load it as an unpacked extension:
-
-1. **Download / Clone Repository**: Download this folder to your local machine.
-2. **Open Extensions Page**: Open your browser and navigate to:
-   * **Chrome**: `chrome://extensions/`
-   * **Edge**: `edge://extensions/`
-   * **Brave**: `brave://extensions/`
-3. **Enable Developer Mode**: Toggle the **Developer mode** switch in the top-right corner to **ON**.
-4. **Load Unpacked Extension**:
-   * Click the **Load unpacked** button in the top-left area.
-   * Select the root folder containing the `manifest.json` file.
-5. **Pin & Launch**: Pin the **CreepingScripts** icon to your browser toolbar for instant single-click access!
+1. **Extract ZIP File**: Unzip the extension archive into a dedicated folder (e.g. `CreepingScripts-Extension`).
+2. **Open Extensions Page**:
+   - Google Chrome: `chrome://extensions/`
+   - Brave: `brave://extensions/`
+   - Microsoft Edge: `edge://extensions/`
+   - Opera: `opera://extensions/`
+3. **Enable Developer Mode**: Toggle the **Developer mode** switch in the top-right corner.
+4. **Load Unpacked**: Click the **Load unpacked** button (top-left) and select the extracted folder containing `manifest.json`.
+5. **Pin to Toolbar**: Click the Extensions (puzzle piece) icon, find **CreepingScripts Workspace**, and pin it for instant 1-click access!
 
 ---
 
-## 🛡️ Security & Environment Limitations
+## 🔧 How to Use Auto-Rules
 
-*   **System Restriction Bounds**: Chrome extension sandboxes are blocked by modern browsers from executing custom code on internal browser pages (such as `chrome://settings`, `edge://extensions`, or `about:blank`).
-*   **Store Protections**: Script execution is restricted on official Web Stores (e.g., Chrome Web Store) for browser account safety.
-*   **Content Security Policy (CSP)**: Some heavily restricted domains (e.g., GitHub, Google Accounts) enforce rigid CSP rules blocking inline script injection or evaluation. CreepingScripts catches these security blocks gracefully and provides safe, helpful feedback alerts.
-
----
-
-## 📜 License
-
-This project is licensed under the **Apache 2.0 License** - free for developers, QA engineers, and open-source designers!
+1. Open the CreepingScripts popup by clicking the extension icon.
+2. Click the **⚡ Auto-Rules** tab or the **+ New Rule** button.
+3. Choose the bookmarklet you want to automate (e.g. *Redirect & Popunder Blocker* or *Grid Overlay*).
+4. Enter the URL wildcard pattern (e.g. `*stream*` or `*localhost:*`).
+5. Click **Save Auto-Rule**.
+6. Whenever you navigate to any matching URL, the script will automatically inject into the page!
